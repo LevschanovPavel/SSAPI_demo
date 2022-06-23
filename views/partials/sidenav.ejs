@@ -1,0 +1,69 @@
+
+
+<div class="container">
+  <a href="#" data-target="nav-mobile" class="top-nav sidenav-trigger full hide-on-large-only">
+    <i class="material-icons" data-aos="fade-down" data-aos-delay="600">menu</i>
+  </a>
+</div>
+
+<ul id="nav-mobile" class="sidenav sidenav-fixed">
+  
+    <li class="logo"><img src="/img/stats.png" alt=""></li>
+    <li class="version"><span>Statistics</span><br/>version: 1.0.0</li>
+    <li class="index-icons" data-aos="zoom-in">
+      <a href="/"><i class="material-icons">date_range</i>Schedule</a>
+      <a href="/summary"><i class="material-icons">leaderboard</i> Summary</a>
+      <a href="/referees"><i class="material-icons">sports</i> Referees</a>
+    </li>
+    
+  <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+      <% for(let m=0; m < pageData.menu.length; m++) { %>
+        <% if(!pageData.menu[m].submenu){ %>
+          <li class="bold">
+            <a href='<%= pageData.menu[m].link %>' class="waves-effect waves-teal">
+              <%= pageData.menu[m].title %>
+            </a>
+          </li>
+        <% } else { %> 
+          <li class="bold" id='<%= pageData.menu[m].id %>'>
+            <a class="collapsible-header waves-effect waves-light">
+              <img src="/img/flag/<%= pageData.menu[m].flag %>" width="16"/>
+              <%= pageData.menu[m].title %>
+            </a>
+            <div class="collapsible-body">
+              <ul>
+                <% for(let s=0; s < pageData.menu[m].submenu.length; s++) { %>
+                  <li>
+                    <a href='<%= pageData.menu[m].submenu[s].link %>'>
+                      <img src="/img/league/<%= pageData.menu[m].submenu[s].logo %>" width="24"/>
+                      <%= pageData.menu[m].submenu[s].title %>
+                    </a>
+                  </li>
+                <% } %>
+              </ul>
+            </div>
+          </li>      
+        <% } %>
+      <% } %> 
+    </ul>
+  </li>
+
+</ul>
+
+<script>
+  let category = '<%= pageData.data.category %>'
+
+  if (category) {
+    document.querySelectorAll("a[href='<%= pageData.data.link %>']")[0]
+      .parentElement.classList.add('active')
+    document.getElementById(category).classList.add('active')
+  } else {
+    document.querySelectorAll("a[href='<%= pageData.data.link %>']")[0]
+      .parentElement.classList.add('active')
+  }
+  
+  let home = document.getElementsByClassName('logo');
+  home[0].onclick = function() {location.assign(`/`)};
+  
+</script>

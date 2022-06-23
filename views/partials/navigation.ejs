@@ -1,0 +1,26 @@
+<div class="row navigation">
+  <div class="col s12 m6">
+    <% if(pageData.data.previous) { %>
+    <a href='<%= pageData.data.previous.link %>' class="navigation-box">
+      <span>
+        <i class="material-icons icon-left">subdirectory_arrow_left</i>
+      </span>
+      <div style="display: block;">
+        <h2>previous</h2>
+        <h1><%= pageData.data.previous.title %></h1>
+      </div>
+    </a>
+    <% } %> 
+  </div>
+  <div class="col s12 m6">
+    <% if(pageData.data.next) { %>
+    <a href='<%= pageData.data.next.link %>' class="navigation-box">
+      <div style="display: block;">
+        <h2>next</h2>
+        <h1><%= pageData.data.next.title %></h1>
+      </div>
+      <span><i class="material-icons icon-right">subdirectory_arrow_right</i></span>
+    </a>
+    <% } %> 
+  </div>
+</div>

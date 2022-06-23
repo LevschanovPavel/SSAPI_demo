@@ -1,0 +1,134 @@
+<%- include('partials/header'); -%>
+<main>
+  <div class="container doc">
+    <div class="row">
+      <div class="col s12 m12 xl10">
+        <div id="structure1" class="section scrollspy">
+          <%- include('partials/breadcrumbs'); -%>
+
+          <!-- <div class="league-title">
+            <span class="logo"><img src="/img/league/<%= pageData.data.logo %>"/></span>
+            <h1><%= pageData.data.title %> <i>(<%= pageData.data.category %>)</i></h1>
+          </div> -->
+
+          
+          <% if (summary){ %>
+            <%- include('partials/match-summary'); -%> 
+          <% } else { %>
+            <%- include('partials/match-statistics'); -%> 
+          <% } %>          
+        </div>
+      </div>
+      <div class="col xl2 show-on-large banner_160x600"><img src="/img/banner/160x600_1.gif" alt="" /></div>
+    </div>
+  </div>
+</main>
+<%- include('partials/footer'); -%>
+
+
+<script>
+  var inc = document.getElementsByClassName("stepper");
+
+
+for (i = 0; i < inc.length; i++) {
+  var incI = inc[i].querySelector("input"),
+    id = incI.getAttribute("id"),
+    min = incI.getAttribute("min"),
+    max = incI.getAttribute("max"),
+    step = incI.getAttribute("step");
+  document
+    .getElementById(id)
+    .previousElementSibling.setAttribute(
+      "onclick",
+      "stepperInput('" + id + "', -" + step + ", " + min + ")"
+    ); 
+  document
+    .getElementById(id)
+    .nextElementSibling.setAttribute(
+      "onclick",
+      "stepperInput('" + id + "', " + step + ", " + max + ")"
+    ); 
+}
+
+function stepperInput(id, s, m) {
+  var el = document.getElementById(id);
+  if (s > 0) {
+    if (parseFloat(el.value) < m) {
+      el.value = parseFloat(el.value) + s;
+    }
+  } else {
+    if (parseFloat(el.value) > m) {
+      el.value = parseFloat(el.value) + s;
+    }
+  }
+}
+</script>
+
+<script>
+
+  let stats_buttons = document.getElementsByClassName('stats_dropdown--btn');
+    
+    for (var i = 0; i < stats_buttons.length; i++)
+      stats_buttons[i].onclick = function() {
+        let compare_value = $(this).closest('.stats_dropdown').find("input").val()
+        let col_id = $(this).closest('.dropdown-content')[0].id
+        console.log("col_id",col_id)
+        ApplyFilter(parseFloat(compare_value), col_id);
+    };
+
+function ApplyFilter(num,id) {
+  $('div[stats="compare"]').each(function(i,el){
+    $(el).css({color: "#363636", background: "#fff"});
+  });
+
+
+    let str = id.replace("dropdown-", "");
+    console.log("str",str)
+    let total_match = $(`.${str}`).map(function() {
+      if (parseInt(this.innerHTML) > num) {$(this).css({color: "blue", background: "#e5e5e5"})}
+      if (parseInt(this.innerHTML) < num) {$(this).css({color: "red", background: "#e5e5e5"})}
+      if (parseInt(this.innerHTML) === num) {$(this).css({color: "green", background: "#e5e5e5"})}
+    return this.innerHTML;
+  }).get();
+}
+</script>
+
+<script>
+
+let sel = document.getElementById("category");
+let stats = '<%= stats %>'
+let leagueId = '<%= leagueId %>'
+let country = '<%= country %>'
+
+if (!stats) stats = 'matches'
+console.log("stats",stats)
+let find_option = stats?[...sel.querySelectorAll("option")].find((it) => it.value.includes(stats)):null;
+console.log("find_option",find_option.text)
+if (find_option) {
+  find_option.selected = true; 
+  document.getElementById("stats-selected").innerHTML=find_option.text
+} 
+
+
+$("#category").change(function() {
+  let stat = $('select').val()
+  let matchId = '<%= data.matchId %>'
+  if (stat==="matches") {location.assign(`/${country}/${leagueId}/match?id=${matchId}`)}
+  else {location.assign(`/${country}/${leagueId}/match?id=${matchId}&stats=${stat}`)}
+});
+
+document
+  .querySelector('.league-match>.logo')
+  .addEventListener('click', ()=>{
+    let matchId = '<%= data.matchId %>'
+    location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+  })
+
+document
+  .querySelector('.league-match>.info')
+  .addEventListener('click', ()=>{
+    let matchId = '<%= data.matchId %>'
+    location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+  })
+
+</script>

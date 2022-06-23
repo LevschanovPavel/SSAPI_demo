@@ -1,0 +1,840 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+ :root {
+  --color-white: #fff;
+  --color-live: #cd0200;
+  --value-transparency-1: 0.3;
+  --value-transparency-2: 0.15;
+  --color-background-1: #fff;
+  --color-background-2: #e1e1e1;
+  --color-background-3: #fff;
+  --color-background-4: #e9e9e9;
+  --color-background-5: #e9e9e9;
+  --color-background-6: hsl(39, 69%, 91%);
+  --color-background-7: #ffe1af;
+  --color-background-8: #f0f0f0;
+  --color-background-9: #d5d5d5;
+  --color-background-10: #f6f6f6;
+  --color-background-11: #fff;
+  --color-background-12: #e7e7e7;
+  --color-background-13: #167e00;
+  --color-background-hover-1: #f2f2f2;
+  --color-background-hover-2: #d9d9d9;
+  --color-background-hover-3: #e9e9e9;
+  --color-background-hover-4: #f0f0f0;
+  --color-background-hover-5: #336914;
+  --color-background-highlight-1: #ffd8d8;
+  --color-background-highlight-2: #fcf0b7;
+  --color-background-highlight-3: #ffce99;
+  --color-background-highlight-4: #d9f7c7;
+  --color-background-highlight-5: #fdd;
+  --color-background-highlight-6: #f3f3f3;
+  --color-background-highlight-7: #eef6fa;
+  --color-background-highlight-8: #98f83f;
+  --color-text-1: #656565;
+  --color-text-2: #b0b0b0;
+  --color-text-3: #656565;
+  --color-text-4: #2d2d2d;
+  --color-text-5: #656565;
+  --color-text-highlight-1: #c00;
+  --color-text-highlight-2: #84705b;
+  --color-text-highlight-3: #1b7700;
+  --color-text-highlight-4: #0a0;
+  --color-text-highlight-5: #a00;
+  --color-border-1: #e5e5e5;
+  --color-border-2: rgba(0,0,0,0.1);
+  --color-border-3: rgba(0,0,0,0.1);
+  --color-border-4: #d5d5d5;
+  --color-border-5: #ccc;
+  --color-border-6: #8f8f8f;
+  --color-border-7: rgba(0,0,0,0.1);
+  --color-border-9: #e5e5e5;
+  --color-border-10: #dbdbdb;
+  --color-border-11: #d1d1d1;
+  --color-alpha-1: 0,0,0;
+  --color-alpha-2: 255,255,255;
+  --color-alpha-3: 240,240,240;
+  --color-alpha-4: 255,255,255;
+  --color-icon-1: #8f8f8f;
+  --color-betIcon-stroke: #8f8f8f;
+  --color-betIcon-text: #656565;
+  --color-previewIcon-text: #656565;
+  --color-stroke-myTeams: #656556;
+  --color-cricketServis: #7b081b;
+  --color-AmericanFootballServis: #834132;
+  --color-red-icon: #d22a30;
+  --color-green-icon: #227650;
+  --color-search: #fff;
+  --color-loading: #353c48;
+  --color-tooltip: #232323;
+  --color-skeleton-1: #f2f2f2;
+  --color-skeleton-2: #dcdcdc;
+  --color-skeleton-3: #f0f0f0;
+  --color-myGamesBubble: #d5d5d5;
+  --color-liveBettingStrip-background: #dcefce;
+  --color-liveBettingStrip-hover: #e8f8dc;
+  --color-liveBettingStrip-text: #4daa50;
+  --color-liveBettingStrip-button: #4eae50;
+  --color-darts-serve: #7b613a;
+  --color-footballGoal: #2d2d2d;
+  --color-floorballGoal: #2d2d2d;
+  --color-assist-background: #dadada;
+  --color-penalty: #cd0200;
+  --color-americanFootballBall: #3d3d3d;
+  --color-redCard: #d92a2f;
+  --color-yellowCard: #f9c91e;
+  --color-behind: #3d3d3d;
+  --color-handballBall: #0b286c;
+  --color-misconduct: #c83c38;
+  --color-misconductText: #fff;
+  --color-var-live: #d92a2f;
+  --color-foul: #000;
+}
+
+/* The emerging W3C standard
+   that is currently Firefox-only */
+   * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+  }
+  
+  /* Works on Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.7);
+    /* border-radius: 20px; */
+    border: transparent;
+  }
+  
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%
+}
+
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 100%
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .container {
+    width: 100%
+  }
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+
+p {
+  line-height: 2rem;
+}
+
+.sidenav {
+  top:56px;
+  background-color: #f2f2f2;
+}
+.sidenav-trigger {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+  .parallax-container .section {
+    width: 100%;
+  }
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+
+.auth{
+  background-color: white;
+  padding: 15px 0;
+}
+
+.auth h4 {
+  color: #444;
+}
+
+.auth-icon{
+  padding: 15px 0;
+}
+.auth-icon:hover{
+  color:#26a69a;
+}
+
+.error {
+  padding: 15px 0;
+  color:#ef5350;
+}
+
+.user-control:hover{
+  cursor:poiner;
+  /* width: 30px; */
+}
+
+
+.tabs .tab a {
+  color: rgba(38, 166, 154, 0.7);
+  /*Custom Text Color*/
+}
+
+.tabs .tab a:hover {
+  color:#26a69a;
+  /*Custom Color On Hover*/
+}
+
+.tabs .tab a:focus.active {
+  color:#26a69a;
+  /*Custom Text Color While Active*/
+  background-color: rgba(38, 166, 154, 0.2);
+  /*Custom Background Color While Active*/
+}
+
+.tabs .indicator {
+  background-color:#26a69a;
+  /*Custom Color Of Indicator*/
+}
+
+.tabs .tab a.active {
+  background-color: transparent;
+  color:#26a69a;
+}
+
+
+.league_logo {
+    width: 41px;
+    height: 41px;
+    border-radius: 8px;
+    border: 1px solid rgba(0,0,0,.1);
+    background: no-repeat 50%/72px 72px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }   
+
+.league_logo img {
+  width: 32px;
+  height: 32px;
+}
+
+
+
+.event_header {
+  height: 36px;
+  align-items: center;
+  justify-content: flex-start;
+  color: var(--color-text-5);
+  background-color: rgba(38, 166, 154, 0.2);
+  position: relative;
+  display: grid;
+  font-size:14px;
+}
+
+.event_header:not(:only-child) {
+  border-bottom: 1px solid var(--color-border-3);
+}
+
+.event__titleBox {
+  display: grid;
+  grid-row-gap: 2px;
+  flex-flow: row nowrap;
+  /* line-height: 14px; */
+  white-space: nowrap;
+  overflow: hidden;
+  /* grid-template-areas: " name " " type " */
+}
+.event__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  flex: 1;
+  justify-content: flex-start;
+  max-width: 100%;
+  font-weight: 700;
+}
+ 
+.event__title--type {
+  opacity: .6;
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+.event__title--name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.icon--flag:before {
+  content: "";
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 12px;
+  margin-right: 12px;
+  margin-left: 18px;
+  flex-shrink: 0;
+  display: flex
+}
+
+.icon--flag:before {
+  background-repeat: no-repeat;
+  background-size: 18px 12px;
+  background-position: 50%;
+  filter: brightness(98%);
+}
+
+.event {
+  height: 46px;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr 20px 1fr ;
+  grid-gap: 0.5rem;
+  border-bottom: 1px solid var(--color-border-1);
+}
+.event .time{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-left: 48px;
+  line-height: 15px;
+  text-align: right;
+  font-weight: 500;
+  color: var(--color-text-1);
+  font-size:12px;
+}
+.event .split{
+  align-self: center;
+  text-align: center;
+}
+
+.event .logo {
+  width: 15px;
+  height: 15px;
+  align-self: center;
+}
+.event .home_team .logo {
+  margin-right: 5px;
+}
+.event .away_team .logo {
+  margin-left: 5px;
+}
+.event .home_team {
+  align-self: center;
+  display: flex;
+  padding: 2px 0;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  justify-content: flex-end;
+  text-align: right;
+
+  flex-flow: row nowrap;
+  /* line-height: 14px; */
+  white-space: nowrap;
+  overflow: hidden;
+}
+.event .home_team span, .event .away_team span{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+.event .away_team {
+  align-self: center;
+  display: flex;
+  padding: 2px 0;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.event:hover {
+  background-color:var(--color-background-hover-1)
+}
+
+
+table th{
+  color: var(--color-text-5);
+  background-color: rgba(38, 166, 154, 0.2);
+  border-bottom: 2px solid #26a69a;
+}
+
+table td,table th{
+padding-left:10px;
+} 
+
+.table .code {
+  background-color: #f5f5f5;
+  color: #f14668;
+  font-size: 0.875em;
+  font-weight: 400;
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  font-family: monospace;
+  padding: 0.25em 0.5em;
+}
+
+.users-controls span i{
+cursor:pointer;
+}
+
+.toast {
+  color: #424242  !important;
+  text-align: center!important;
+  font-size: 1.3rem;
+  font-weight: 500;
+  background-color: #ffeb3b!important;
+}
+
+@media only screen and (max-width: 600px) {
+  #toast-container {
+  min-width: 8%!important;
+  top: 50%!important;
+  right: 50%!important; 
+  }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  #toast-container {
+    min-width: 8%!important;
+    top: 50%!important;
+    right: 50%!important; 
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  #toast-container {
+    min-width: 8%!important;
+    top: 15%!important;
+    left: 5%;
+    right: 75%!important; 
+  }
+}
+
+.nav-user{
+white-space: nowrap;
+display: flex;
+}
+
+nav .brand-logo {
+  margin-top: 5px;
+  margin-left: 25px;
+}
+nav .brand-logo img{
+  height:50px;
+}
+
+
+@media only screen and (max-width: 992px){
+  nav .brand-logo {
+    position: static;
+    left: 2%;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);      
+  }    
+  }
+
+  @media only screen and (max-width: 600px) {  
+    nav .brand-logo {
+    position: absolute;
+    left: 48%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);      
+  }    
+  }
+
+
+
+.icon-block {
+  padding: 0 10px;
+}
+.icon-block .material-icons {
+  font-size: inherit;
+}
+
+footer.page-footer {
+  margin: 0;
+}
+.icon-block img {
+  width: 100px;
+}
+
+
+
+.json-block li{
+display:flex;
+padding: 10px 0;
+}
+.json-block li i{
+  padding: 0 10px;
+  color:#26a69a;
+  }
+
+  .json-block .code {
+    background-color: #f5f5f5;
+    color: #f14668;
+    font-size: 0.875em;
+    font-weight: 400;
+    -moz-osx-font-smoothing: auto;
+    -webkit-font-smoothing: auto;
+    font-family: monospace;
+    padding: 0.25em 0.5em;
+  }  
+
+
+.grey-container {
+    position: relative;
+    overflow: hidden;
+    height: auto; 
+    background-color: #f2f2f2;   
+}  
+
+
+.dropdown-content{
+  min-width: 200px;
+}
+.btn-flat:focus {
+  background-color: transparent;
+}
+
+
+
+
+/* SIDENAV HEADER */
+.sidenav-header {
+background: url("../images/user-bg.jpg") no-repeat center center;
+background-size: cover;
+margin-bottom: 0px;
+padding: 15px 0 0 15px;
+}
+.sidenav-header .row{
+  margin-bottom: 0;
+}
+
+.sidenav-footer {
+margin-bottom: 0px;
+padding: 0;
+}
+
+
+.sidenav-footer .row{
+  margin-bottom: 0;
+}
+
+.sidenav-footer .row .social-icons a{
+  opacity: 0.5;
+  padding: 0;
+  text-align:center;
+}
+
+.sidenav-footer .row .social-icons a:hover{
+  background-color:inherit;
+  opacity: 1;
+}
+
+.side-nav li a {
+  padding: 0 16px;
+}
+
+.side-nav .divider {
+  margin:0;
+  height:8px;
+  border-bottom:1px solid #e0e0e0;
+  background-color: transparent;
+}
+
+
+.more {
+  color: blue;
+}
+
+.less {
+  color:red;
+}
+
+
+
+
+.today_matches_container {
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+.today_matches_container .event{
+  cursor:pointer;
+}
+
+.event {
+  height: 46px;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-columns: min-content 1fr 20px 1fr min-content;
+  grid-gap: 0.5rem;
+  border-bottom: 1px solid var(--color-border-1);
+}
+.event .matchId {
+  align-self: center;
+  font-size: 0.875em;
+  font-weight: 400;
+  margin-right: 18px;
+}
+
+.event .matchId .code {
+  background-color: #f5f5f5;
+  color: #f14668;
+  font-size: 0.875em;
+  font-weight: 400;
+  -moz-osx-font-smoothing: auto;
+  -webkit-font-smoothing: auto;
+  font-family: monospace;
+  padding: 0.25em 0.5em;
+}
+.today_matches_container .event .time {
+  white-space: nowrap;
+}
+
+
+
+.today_matches_container .collapsible-header {
+  display: block;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  line-height: 1.5;
+  padding: 0rem !important;
+  background-color: #fff;
+  border: none !important;
+}
+
+.today_matches_container .collapsible li.active{
+  background-color: var(--color-background-hover-1);
+}
+
+.today_matches_container .collapsible li.active .event{
+  border-bottom: none;
+}
+
+.today_matches_container .collapsible li.active .collapsible-body{
+  border-bottom: 1px solid var(--color-border-1)!important;
+}
+
+
+.today_matches_container .collapsible li.active .collapsible-header{
+  background-color: var(--color-background-hover-1);
+  color:green;
+}
+
+.today_matches_container .collapsible li.active .event .matchId .code {
+  background-color: var(--color-background-hover-1);
+}
+
+.today_matches_container .collapsible li.active .event .time{
+  color:green;
+}
+
+
+.today_matches_container .icon-stats  {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5px;
+  text-align: center;
+  cursor:pointer;
+  }
+
+  .today_matches_container .icon-stats img {
+  cursor:pointer;
+  width: 45px;
+  margin-bottom: 10px;
+}
+.today_matches_container .icon-stats:hover img{
+  transform: scale(1.1);
+}
+.today_matches_container .icon-stats:hover span{
+  text-decoration: underline;
+}
+.today_matches_container .collapsible-body .header{
+  text-align: center;
+  font-size: 0.875em;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #4a4a4a!important;
+}
+
+.today_matches_container .icon-stats span{
+  font-size: 0.775em;
+  font-weight: 600;
+  color: #4a4a4a!important;
+}
+
+.banner_160x600{
+  position:relative;
+  margin-top: 25px;
+  text-align: left;
+  padding: 0!important;
+}
+.banner_160x600 img{
+  position:fixed;
+  padding:0;
+  width: 160px;
+  height: 600px;
+}
+
+.banner_728x90{
+  position:relative;
+  text-align: left;
+  padding: 15px 0!important;
+  background-color: #fff;
+  height: 120px;
+}
+.banner_728x90 img{
+  position:fixed;
+  padding:0;
+  width: 728px;
+  height: 90px;
+  z-index: 2;
+}
+
+.ctrl-league {
+  display: grid;
+  grid-template-columns: 100px 100px 1fr 100px;
+  align-items: center;
+}
+
+.ctrl-league ul{
+  display:contents;
+}
+.ctrl-league ul li{
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  height: 34px;
+}
+
+.ctrl-league ul:nth-child(odd):not(:first-child) li{
+  background-color: var(--color-background-2)
+}
+.ctrl-league li[class^="ctrl-th"]{
+  text-align: center;
+  justify-content: center;
+  color: var(--color-text-5);
+  background-color: rgba(38, 166, 154, 0.2);
+  border-bottom: 2px solid #26a69a;
+}
+
+.ctrl-th-league_name {
+ grid-column: 2/4;
+}
+.ctrl-league-id, .ctrl-league_show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+}
+.ctrl-league-logo img {
+  width: 48px;
+}
+.ctrl-league_title{
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  color: #26a69a;
+  display: flex;
+  
+}
+
+.ctrl-league-id {
+  font-size: 12px;
+  color: var(--color-text-1);
+  text-align: center;
+}
+
+.ctrl-league_country{
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  font-size: 12px;
+  color: var(--color-text-5);
+}
+
+.ctrl-league_country img{
+  height: 10px;
+  padding:0 5px;
+}
+
+
+@media only screen and (max-width: 501px) {
+  .ctrl-league {
+    grid-template-columns: 100px 1fr 100px;
+  }
+  .ctrl-league ul li:first-child {
+    display: none;
+  }
+  .ctrl-th-league_name {
+    grid-column: 1/3;
+   }
+}
+@media only screen and (max-width: 401px) {
+  .ctrl-league {
+    grid-template-columns: 30px 1fr 100px;
+  }
+
+  .ctrl-league_country span{
+    display: none;
+  }
+}

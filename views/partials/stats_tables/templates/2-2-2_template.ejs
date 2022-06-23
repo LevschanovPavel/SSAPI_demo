@@ -1,0 +1,255 @@
+<div id="home-tab" class="template_2-2-2" data-aos="fade-up">
+  <div class="stats_table--header statsHome">
+    <div class="stats_table--event">Event</div>
+    <div class="stats_table--match">Match</div>
+    <div class="stats_table--1stHalf">1stHalf</div>
+    <div class="stats_table--2stHalf">2stHalf</div>
+  
+    <!-- Match -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <a class='stats_dropdown-trigger' 
+           data-target='HT_total_dropdown-match--select'>
+           <%= data.matchInfo.homeTeam %>
+        </a>
+    </div>
+    <div class="stats_table--opp" title='Opponent team'>
+      <a class='stats_dropdown-trigger' 
+        data-target='HT_total_dropdown-match--opponent'>
+        Opponent
+      </a>    
+    </div>
+    
+    <!-- 1stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <a class='stats_dropdown-trigger' 
+          data-target='HT_total_dropdown-1stHalf--select'>
+          <%= data.matchInfo.homeTeam %>
+        </a>
+    </div>
+    <div class="stats_table--opp" title='Opponent team'>
+      <a class='stats_dropdown-trigger' 
+         data-target='HT_total_dropdown-1stHalf--opponent'>
+         Opponent
+      </a>    
+    </div>    
+    
+    <!-- 2stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <a class='stats_dropdown-trigger' 
+           data-target='HT_total_dropdown-2ndHalf--select'>
+           <%= data.matchInfo.homeTeam %>
+        </a>
+    </div>
+    <div class="stats_table--opp" title='Opponent team'>
+      <a class='stats_dropdown-trigger' 
+         data-target='HT_total_dropdown-2ndHalf--opponent'>
+         Opponent
+      </a>    
+    </div>                     
+    
+  
+    <% for(let m=0; m < data.matchStats[0].matches.length; m++) { %>
+      <% let info = data.matchStats[0].matches[m].matchInfo %>
+      <% let statistic = data.matchStats[0].matches[m][stats] %>
+  
+      <% if (!statistic.match.homeTeam || statistic.match.homeTeam==="no data") { %>
+        <% continue %> 
+      <% } %>
+     
+      <div class="stats_td--event tooltipped" 
+           data-position="top" 
+           data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                         <span><%= info.league %></span></div>
+                         <i>(<%= info.fullDate %>)</i><br/>
+                         <%= info.tooltip %>">
+        <div>
+          <span class="stats_td--date"><%=info.fullDate %></span>
+          <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+          <span class="stats_td--status"><%=info.status %></span>
+        </div>
+      </div>
+  
+      <div class="stats_td--main HT_total_match--select" stats="compare"><%= parseInt(statistic.match.selectTeam) %></div> 
+      <div class="stats_td--opp HT_total_match--opponent" stats="compare"><%= parseInt(statistic.match.opponent) %></div>
+    
+      <div class="stats_td--main HT_total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf.selectTeam) %></div> 
+      <div class="stats_td--opp HT_total_1stHalf--opponent" stats="compare"><%= parseInt(statistic.firstHalf.opponent) %></div>                              
+      
+      <div class="stats_td--main HT_total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf.selectTeam) %></div> 
+      <div class="stats_td--opp HT_total_2ndHalf--opponent" stats="compare"><%= parseInt(statistic.secondHalf.opponent) %></div>        
+    <% } %>    
+  
+  </div>
+  </div>
+
+  <div id="away-tab" class="template_2-2-2">
+  <div class="stats_table--header statsAway">
+    <div class="stats_table--event">Event</div>
+    <div class="stats_table--match">Match</div>
+    <div class="stats_table--1stHalf">1stHalf</div>
+    <div class="stats_table--2stHalf">2stHalf</div>
+  
+    <!-- Match -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <a class='stats_dropdown-trigger' 
+           data-target='AT_total_dropdown-match--select'>
+           <%= data.matchInfo.awayTeam %>
+        </a>
+    </div>
+    <div class="stats_table--opp" title='Opponent team'>
+      <a class='stats_dropdown-trigger' 
+        data-target='AT_total_dropdown-match--opponent'>
+        Opponent
+      </a>    
+    </div>
+    
+    <!-- 1stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <a class='stats_dropdown-trigger' 
+          data-target='AT_total_dropdown-1stHalf--select'>
+          <%= data.matchInfo.awayTeam %>
+        </a>
+    </div>
+    <div class="stats_table--opp" title='Opponent team'>
+      <a class='stats_dropdown-trigger' 
+         data-target='AT_total_dropdown-1stHalf--opponent'>
+         Opponent
+      </a>    
+    </div>    
+    
+    <!-- 2stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <a class='stats_dropdown-trigger' 
+           data-target='AT_total_dropdown-2ndHalf--select'>
+           <%= data.matchInfo.awayTeam %>
+        </a>
+    </div>
+    <div class="stats_table--opp" title='Opponent team'>
+      <a class='stats_dropdown-trigger' 
+         data-target='AT_total_dropdown-2ndHalf--opponent'>
+         Opponent
+      </a>    
+    </div>                     
+    
+  
+    <% for(let m=0; m < data.matchStats[1].matches.length; m++) { %>
+      <% let info = data.matchStats[1].matches[m].matchInfo %>
+      <% let statistic = data.matchStats[1].matches[m][stats] %>
+  
+      <% if (!statistic.match.homeTeam || statistic.match.homeTeam==="no data") { %>
+        <% continue %> 
+      <% } %>
+    
+      <div class="stats_td--event tooltipped" 
+           data-position="top" 
+           data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                         <span><%= info.league %></span></div>
+                         <i>(<%= info.fullDate %>)</i><br/>
+                         <%= info.tooltip %>">
+        <div>
+          <span class="stats_td--date"><%=info.fullDate %></span>
+          <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+          <span class="stats_td--status"><%=info.status %></span>
+        </div>
+      </div>
+  
+      <div class="stats_td--main AT_total_match--select" stats="compare"><%= parseInt(statistic.match.selectTeam) %></div> 
+      <div class="stats_td--opp AT_total_match--opponent" stats="compare"><%= parseInt(statistic.match.opponent) %></div>
+    
+      <div class="stats_td--main AT_total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf.selectTeam) %></div> 
+      <div class="stats_td--opp AT_total_1stHalf--opponent" stats="compare"><%= parseInt(statistic.firstHalf.opponent) %></div>                              
+      
+      <div class="stats_td--main AT_total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf.selectTeam) %></div> 
+      <div class="stats_td--opp AT_total_2ndHalf--opponent" stats="compare"><%= parseInt(statistic.secondHalf.opponent) %></div>        
+    <% } %>    
+  
+  </div>
+  </div>
+  
+  <div id="h2h-tab"  class="template_2-2-2">
+    <div class="stats_table--header statsAway">
+      <div class="stats_table--event">Event</div>
+      <div class="stats_table--match">Match</div>
+      <div class="stats_table--1stHalf">1stHalf</div>
+      <div class="stats_table--2stHalf">2stHalf</div>
+    
+      <!-- Match -->
+      <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+          <a class='stats_dropdown-trigger' 
+             data-target='H2H_total_dropdown-match--select'>
+             <%= data.matchInfo.homeTeam %>
+          </a>
+      </div>
+      <div class="stats_table--main" title='Opponent team'>
+        <a class='stats_dropdown-trigger' 
+           data-target='H2H_total_dropdown-match--opponent'>
+           <%= data.matchInfo.awayTeam %>
+        </a>    
+      </div>
+      
+      <!-- 1stHalf -->
+      <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+          <a class='stats_dropdown-trigger' 
+            data-target='H2H_total_dropdown-1stHalf--select'>
+            <%= data.matchInfo.homeTeam %>
+          </a>
+      </div>
+      <div class="stats_table--main" title='Opponent team'>
+        <a class='stats_dropdown-trigger' 
+           data-target='H2H_total_dropdown-1stHalf--opponent'>
+           <%= data.matchInfo.awayTeam %>
+        </a>    
+      </div>    
+      
+      <!-- 2stHalf -->
+      <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+          <a class='stats_dropdown-trigger' 
+             data-target='H2H_total_dropdown-2ndHalf--select'>
+             <%= data.matchInfo.homeTeam %>
+          </a>
+      </div>
+      <div class="stats_table--main" title='Opponent team'>
+        <a class='stats_dropdown-trigger' 
+           data-target='H2H_total_dropdown-2ndHalf--opponent'>
+             <%= data.matchInfo.awayTeam %>
+        </a>    
+      </div>                     
+      
+    
+      <% for(let m=0; m < data.matchStats[2].matches.length; m++) { %>
+        <% let info = data.matchStats[2].matches[m].matchInfo %>
+        <% let statistic = data.matchStats[2].matches[m][stats] %>
+        <% let homeTeam = data.matchInfo.homeTeam %>
+        <% let awayTeam = data.matchInfo.awayTeam %>
+  
+    
+        <div class="stats_td--event tooltipped" 
+             data-position="top" 
+             data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                      <span><%= info.league %></span></div>
+                      <i>(<%= info.fullDate %>)</i><br/>
+                      <%= info.tooltip %>">
+          <div>
+            <span class="stats_td--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="stats_td--status"><%=info.status %></span>
+          </div>
+        </div>
+    
+        <% if (!statistic.match.homeTeam || statistic.match.homeTeam==="no data") { %>
+          <div class="stats_td--no_data">There is no statistic data for this match</div>          
+          <% continue %> 
+        <% } %>
+
+        <div class="stats_td--main H2H_total_match--select" stats="compare"><%= parseInt(statistic.match[homeTeam]) %></div> 
+        <div class="stats_td--opp H2H_total_match--opponent" stats="compare"><%= parseInt(statistic.match[awayTeam]) %></div>
+      
+        <div class="stats_td--main H2H_total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf[homeTeam]) %></div> 
+        <div class="stats_td--opp H2H_total_1stHalf--opponent" stats="compare"><%= parseInt(statistic.firstHalf[awayTeam]) %></div>                              
+        
+        <div class="stats_td--main H2H_total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf[homeTeam]) %></div> 
+        <div class="stats_td--opp H2H_total_2ndHalf--opponent" stats="compare"><%= parseInt(statistic.secondHalf[awayTeam]) %></div>        
+      <% } %>    
+    
+    </div>
+    </div>

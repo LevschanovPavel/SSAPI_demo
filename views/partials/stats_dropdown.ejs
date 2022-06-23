@@ -1,0 +1,363 @@
+<!-- Dropdown Structure -->
+
+<!-- ***********HOME TEAM*********** -->
+<!-- total full match -->
+<div id='HT_total_dropdown-match' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>Full Match</span></div>  
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-match" value='<%= range.TotalMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+
+<!-- total 1stHalf -->
+<div id='HT_total_dropdown-1stHalf' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>1st Half</span></div>       
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-1stHalf" value='<%= range.TotalHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2nd Half -->
+<div id='HT_total_dropdown-2ndHalf' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>2nd Half</span></div>    
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-2ndHalf" value='<%= range.TotalHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total full match select team-->
+<div id='HT_total_dropdown-match--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total Full Match<br> <span><%= data.matchInfo.homeTeam %></span></div>    
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-match--select" value='<%= range.TeamMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf select team-->
+<div id='HT_total_dropdown-1stHalf--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 1st Half<br> <span><%= data.matchInfo.homeTeam %></span></div>      
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-1stHalf--select" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2ndHalf select team-->
+<div id='HT_total_dropdown-2ndHalf--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 2nd Half<br> <span><%= data.matchInfo.homeTeam %></span></div>  
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-2ndHalf--select" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+
+
+<!-- total full match opponent team-->
+<div id='HT_total_dropdown-match--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total Full Match<br> <span>The opposing team</span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-match--opponent" value='<%= range.TeamMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf opponent team-->
+<div id='HT_total_dropdown-1stHalf--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 1st Half<br> <span>The opposing team</span></div>
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-1stHalf--opponent" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2ndHalf opponent team-->
+<div id='HT_total_dropdown-2ndHalf--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 2nd Half<br> <span>The opposing team</span></div>
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="HT_total_stepper-2ndHalf--opponent" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+
+<!-- ***********AWAY TEAM*********** -->
+<!-- total full match -->
+<div id='AT_total_dropdown-match' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>Full Match</span></div>  
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-match" value='<%= range.TotalMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf -->
+<div id='AT_total_dropdown-1stHalf' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>1st Half</span></div>  
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-1stHalf" value='<%= range.TotalHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2nd Half -->
+<div id='AT_total_dropdown-2ndHalf' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>2nd Half</span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-2ndHalf" value='<%= range.TotalHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total full match select team-->
+<div id='AT_total_dropdown-match--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total Full Match<br> <span><%= data.matchInfo.awayTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-match--select" value='<%= range.TeamMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf select team-->
+<div id='AT_total_dropdown-1stHalf--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 1st Half<br> <span><%= data.matchInfo.awayTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-1stHalf--select" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2ndHalf select team-->
+<div id='AT_total_dropdown-2ndHalf--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 2nd Half<br> <span><%= data.matchInfo.awayTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-2ndHalf--select" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+
+
+<!-- total full match opponent team-->
+<div id='AT_total_dropdown-match--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total Full Match<br> <span>The opposing team</span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-match--opponent" value='<%= range.TeamMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf opponent team-->
+<div id='AT_total_dropdown-1stHalf--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 1st Half<br> <span>The opposing team</span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-1stHalf--opponent" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2ndHalf opponent team-->
+<div id='AT_total_dropdown-2ndHalf--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 2nd Half<br> <span>The opposing team</span></div>
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="AT_total_stepper-2ndHalf--opponent" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- ***********HEAD-TO-HEAD*********** -->
+<!-- total full match -->
+<div id='H2H_total_dropdown-match' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>Full Match</span></div>  
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-match" value='<%= range.TotalMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf -->
+<div id='H2H_total_dropdown-1stHalf' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>1st Half</span></div>  
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-1stHalf" value='<%= range.TotalHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2nd Half -->
+<div id='H2H_total_dropdown-2ndHalf' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total <br> <span>2nd Half</span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-2ndHalf" value='<%= range.TotalHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total full match select team-->
+<div id='H2H_total_dropdown-match--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total Full Match<br> <span><%= data.matchInfo.homeTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-match--select" value='<%= range.TeamMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf select team-->
+<div id='H2H_total_dropdown-1stHalf--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 1st Half<br> <span><%= data.matchInfo.homeTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-1stHalf--select" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2ndHalf select team-->
+<div id='H2H_total_dropdown-2ndHalf--select' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 2nd Half<br> <span><%= data.matchInfo.homeTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-2ndHalf--select" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+
+
+<!-- total full match opponent team-->
+<div id='H2H_total_dropdown-match--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total Full Match<br> <span><%= data.matchInfo.awayTeam %></span></div> 
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-match--opponent" value='<%= range.TeamMatch %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 1stHalf opponent team-->
+<div id='H2H_total_dropdown-1stHalf--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 1st Half<br> <span><%= data.matchInfo.awayTeam %></span></div>
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-1stHalf--opponent" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>
+
+<!-- total 2ndHalf opponent team-->
+<div id='H2H_total_dropdown-2ndHalf--opponent' class='dropdown-content'>
+  <div class='stats_dropdown'>
+    <div class="range_title">Total 2nd Half<br> <span><%= data.matchInfo.awayTeam %></span></div>
+    <span class="stepper">
+      <button>–</button>
+      <input type="number" id="H2H_total_stepper-2ndHalf--opponent" value='<%= range.TeamHalf %>' min='<%= range.Min %>' max='<%= range.Max %>' step="1" readonly>
+      <button>+</button>
+    </span>
+    <a class="waves-effect waves-light btn stats_dropdown--btn" >compare</a>
+  </div>
+</div>

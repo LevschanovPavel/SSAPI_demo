@@ -1,0 +1,152 @@
+ 
+<div class="referee-nav" data-aos="zoom-in" id="summary-tab">
+  <ul class="tabs">
+    <li class="tab col s2" data-tab="total">
+      <a data-league="<%= pageData.top[0].id %>">
+        <div class="logo">
+          <img src="/img/league/<%= pageData.top[0].logo %>" title="<%= pageData.top[0].title %>" />
+        </div> 
+       <span><%= pageData.top[0].title %></span>
+      </a>
+    </li>
+    <li class="tab col s2" data-tab="total">
+      <a data-league="<%= pageData.top[1].id %>">
+        <div class="logo">
+          <img src="/img/league/<%= pageData.top[1].logo %>" title="<%= pageData.top[1].title %>" />
+        </div> 
+       <span><%= pageData.top[1].title %></span>
+      </a>
+    </li>
+    <li class="tab col s2" data-tab="total">
+      <a data-league="<%= pageData.top[2].id %>">
+        <div class="logo">
+          <img src="/img/league/<%= pageData.top[2].logo %>" title="<%= pageData.top[2].title %>" />
+        </div> 
+       <span><%= pageData.top[2].title %></span>
+      </a>
+    </li>       
+    <li class="tab col s2" data-tab="total">
+      <a  data-league="<%= pageData.top[3].id %>">
+        <div class="logo">
+          <img src="/img/league/<%= pageData.top[3].logo %>" title="<%= pageData.top[3].title %>" />
+        </div> 
+       <span><%= pageData.top[3].title %></span>
+      </a>
+    </li>
+    <li class="tab col s2" data-tab="total">
+      <a  data-league="<%= pageData.top[4].id %>">
+        <div class="logo">
+          <img src="/img/league/<%= pageData.top[4].logo %>" title="<%= pageData.top[4].title %>" />
+        </div> 
+       <span><%= pageData.top[4].title %></span>
+      </a>
+    </li>        
+         
+  </ul>
+</div>
+ 
+  <div class="referees_stats_data" data-aos="zoom-in">
+    <ul id="stats_data_sort" class="summary_row-th">
+      <li>Referee</li>
+      <li data-column="countMatches" data-order="asc" class="stats_sort_asc">
+        <img src="/img/icon/matches.png" alt="Count Matches"><span>Matches</span>
+      </li>
+      <li data-column="fouls" data-order="asc">
+        <img src="/img/icon/fouls.png" alt="Fouls"><span>Fouls</span>
+      </li>      
+      <li data-column="penalties" data-order="asc">
+        <img src="/img/icon/penalties.png" alt="Penalties"><span>Penalties</span>
+      </li>
+      <li data-column="yellowCards" data-order="asc">
+        <img src="/img/icon/yellow.png" alt="Yellow Cards"><span>Yellow Cards</span>
+      </li>
+      <li data-column="redCards" data-order="asc">
+        <img src="/img/icon/red.png" alt="Red Cards"><span>Red Cards</span>
+      </li>
+    </ul>
+    <div id="referees_data_input"></div>
+  </div>
+
+
+
+<script>
+  let refereesArray = JSON.parse('<%- JSON.stringify(refereesStats) %>')
+  let refsStats, nextMatchUrl;
+  
+  console.log("refereesArray",refereesArray);
+
+  function buildRefereesStats(data){
+   let stats = document.getElementById('referees_data_input')
+   stats.innerHTML = ''
+   for (let i = 0; i < data.length; i++){
+     let nextMatch = data[i].nextMatchId
+     let nextMatchLink = (nextMatch==="no info")?
+                          `<li class="ref-next-match"></li> `:
+                          `<li class="ref-next-match">
+                            <a href="${nextMatchUrl}${nextMatch}" title="Next match"><i class="material-icons">sports_soccer</i></a>
+                          </li> `
+     let row = `<ul class="referees_row">
+                  ${nextMatchLink}
+                 <li class="ref-name-data"><div><a href="?name=${data[i].name}">${data[i].name}</a></div></li>
+                 <li class="ref-countMatches-data">${data[i].countMatches}</li>
+                 <li class="ref-fouls-data">${data[i].fouls}</li> 
+                 <li class="ref-penalties-data">${data[i].penalties}</li>   
+                 <li class="ref-yellowCards-data">${data[i].yellowCards}</li> 
+                 <li class="ref-redCards-data">${data[i].redCards}</li>                    
+               </ul>`
+     stats.innerHTML += row
+   }
+  }
+
+  function colorStats(column,order){
+   let select = $(`.ref-${column}-data`)
+   select.addClass(`stats_data_select`)
+}  
+
+  $('#stats_data_sort li:not(:eq(0))').on('click', function(){
+   let column = $(this).data('column')
+   let order = $(this).attr('data-order')
+   
+   console.log("column",column)
+   
+
+   $(this).closest('ul').children().removeClass()
+
+   function sortArr (array) {
+     
+     if(order == 'desc'){
+       $(this).attr('data-order', "asc")
+       return array = array.sort((a,b) => a[column] > b[column] ? 1 : -1)
+     }else{
+       $(this).attr('data-order', "desc")
+       return array = array.sort((a,b) => a[column] < b[column] ? 1 : -1)
+     }
+   }
+   console.log("$(this)",$(this))
+   let arrFouls = sortArr.call($(this),refsStats)
+   buildRefereesStats(arrFouls)
+
+   $(this).addClass(`stats_sort_${order}`)
+   
+   colorStats(column)
+ })
+
+
+ $('.referee-nav a').on('click', function(){
+  $('#stats_data_sort li').removeClass()
+   let league = $(this).data('league')
+   let findLeagueData = refereesArray.filter(arr=>arr.id===league)
+   refsStats = findLeagueData[0].refsStats
+   nextMatchUrl = `${findLeagueData[0].country.toLowerCase()}/${findLeagueData[0].id}/match?id=`
+   buildRefereesStats(refsStats)
+   
+  })
+  
+  $('.referee-nav a').on('click', function(){
+    $(`#stats_data_sort li`).attr('data-order', "asc")
+    $(`#stats_data_sort li`)[1].click()
+  })
+
+  $(`.referee-nav a`)[0].click()
+
+</script>

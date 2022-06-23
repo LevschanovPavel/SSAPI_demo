@@ -1,0 +1,78 @@
+
+
+<div class="league-match" data-aos="zoom-in">
+
+  <div class="titleWrapper">
+    <div class="logo">
+      <img src='<%= data.matchInfo.matchLogo %>' alt="">
+    </div>
+    <div class="info">
+        <div class="title"><%= data.matchInfo.homeTeam %> - <%= data.matchInfo.awayTeam %></div>
+        <div class="text"><%= data.matchInfo.matchData %> <%= data.matchInfo.matchTime %></div>
+    </div> 
+  </div> 
+  <div class="infoWrapper">
+      <div class="matchInfo">
+        <span>Referee:</span> 
+     
+        <%  if (pageData.data.referees && data.matchInfo.referee !=="no info") {%>
+          <% let refLink = data.matchInfo.referee.split(" (")[0] %>
+          <a href="/referees?name=<%= refLink %> ">
+            <%= data.matchInfo.referee %> 
+          </a>
+        <%} else {  %>
+          <%= data.matchInfo.referee %> 
+        <%}%>           
+           
+        </br>
+        <span>Venue:</span> <%= data.matchInfo.venue %>
+      </div>
+  </div>     
+</div>    
+
+<div class="league-match--sub">
+  <div class="oddsWrapper" data-aos="flip-left">
+    <div class="odds">
+      <div class="oddsTitle">Odds:</div>
+      <div class="cellWrapper">
+        <span class="cell">
+          <span class="oddsType">1</span>
+          <span class="oddsValue"><%= data.matchInfo.odds.w %></span>
+        </span>
+      </div>
+      <div class="cellWrapper">
+        <span class="cell">
+          <span class="oddsType">X</span>
+          <span class="oddsValue"><%= data.matchInfo.odds.d %></span>
+        </span>
+      </div>
+      <div class="cellWrapper">
+        <span class="cell">
+          <span class="oddsType">2</span>
+          <span class="oddsValue"><%= data.matchInfo.odds.l %></span>
+        </span>
+      </div>                        
+    </div>
+  </div>
+
+  <div class="change-stats">
+    <div class="input-field ">
+      <select id="category">
+        <option value="matches" selected>Last Matches</option> 
+        <option value="goals" selected>Total</option> 
+        <option value="ballPossession">Ball Possession</option>
+        <option value="goalAttempts">Goal Attempts</option>
+        <option value="shotsOnGoal">Shots on Goal</option>
+        <option value="cornerKicks">Corner Kicks</option>
+        <option value="offsides">Offsides</option>
+        <option value="throwIns">Throw-in</option>
+        <option value="fouls">Fouls</option>
+        <option value="yellowCards">Yellow Cards</option> 
+        <option value="redCards">Red Cards</option> 
+        <option value="penalties">Penalties</option> 
+      </select> 
+      <label>Statistics Select</label>
+    </div>
+  </div>
+
+</div>

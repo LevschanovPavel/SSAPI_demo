@@ -1,0 +1,172 @@
+
+
+<div class="referee-info" data-aos="zoom-in">
+  <span class="referee-title"><%= refInfo.fullName %></span>
+  <div class="referee-foto"><img src="<%= refInfo.fotoUrl %>"></div>
+  <div class="referee-passport">
+    <ul>
+      <li>Date of birth: <span><%= refInfo.birthDate %></span></li>
+      <li>Age: <span><%= refInfo.age %></span></li>
+      <li>
+        Place of birth: 
+        <span>
+          <%= refInfo.birthPlace %> 
+          <i>(<img src="https://www.soccer24.com<%= refInfo.birthCountryFlag %>" alt="fouls">&nbsp;<%= refInfo.birthCountry %>)</i>
+        </span>
+      </li>
+    </ul>
+  </div>  
+  <div class="referee-average">
+    Average Statistics <i>(last&nbsp;<%= refInfo.countMatches %>&nbsp;matches)</i>
+    <div>
+        <img src="/img/whistle.png" alt="fouls">
+        <%= refInfo.average.fouls %>
+        <img src="/img/yellowCard.png" alt="Penalty">
+        <%= refInfo.average.yellowCards %>
+        <img src="/img/redCard.png" alt="Penalty">
+        <%= refInfo.average.redCards %>
+        <img src="/img/penalty2.png" alt="Penalty">
+        <%= refInfo.average.penalties %>
+    </div>
+  </div>
+</div>
+
+<% if (refInfo.nextMatch.matchData) { %>
+
+<div class="referee-next-match" data-aos="fade-right" data-aos-delay="800">
+    <div class="info">
+        Next match:
+        <span class="text"><%= refInfo.nextMatch.matchData %> <%= refInfo.nextMatch.matchTime %></span>
+        <img src='https://www.soccer24.com/res/image/data/<%= refInfo.nextMatch.homeTeamIco %>' alt="">
+        <a href="/<%= refInfo.nextMatch.country %>/<%= refInfo.nextMatch.champId %>/match?id=<%= refInfo.nextMatch.matchId %>">
+          <span class="title">
+            <span class="show-on-small hide-on-med-and-up">
+              <%= refInfo.nextMatch.homeTeamShortName %> - <%= refInfo.nextMatch.awayTeamShortName %>
+            </span>
+            <span class="hide-on-small-only">
+              <%= refInfo.nextMatch.homeTeam %> - <%= refInfo.nextMatch.awayTeam %>
+            </span>             
+          </span>
+        </a>
+        <img src='https://www.soccer24.com/res/image/data/<%= refInfo.nextMatch.awayTeamIco %>' alt="">
+    </div> 
+    <div class="filter">
+      Filter matches by: 
+      <ul class="referee-next-match_filter">
+        <li data-filter="all">All</li>
+        <li data-filter="<%= refInfo.nextMatch.homeTeam %>">
+          <span class="show-on-small hide-on-med-and-up"><%= refInfo.nextMatch.homeTeamShortName %></span>
+          <span class="hide-on-small-only"><%= refInfo.nextMatch.homeTeam %></span>
+        </li>
+        <li data-filter="<%= refInfo.nextMatch.awayTeam %>">
+          <span class="show-on-small hide-on-med-and-up"><%= refInfo.nextMatch.awayTeamShortName %></span>
+          <span class="hide-on-small-only"><%= refInfo.nextMatch.awayTeam %></span>          
+        </li>
+        <li data-filter="both">
+          <span class="show-on-small hide-on-med-and-up">Both</span>
+          <span class="hide-on-small-only">Both team</span>               
+        </li>
+      </ul>
+    </div>
+</div>
+<% } %>
+
+<div class="referee-stats" data-aos="zoom-in">
+<% for(let s=0; s < refInfo.matches.length; s++) { %>
+
+  <div class="season-row">
+    <div class="season-number"><span>Season <%= refInfo.matches[s][0].season %></span></div>
+    <ul class="referee-stats-match-th">
+      <li>Date</li>
+      <li>Home team</li>
+      <li>Away team</li>
+      <li>Result</li>
+      <li>Fouls</li>
+      <li class="referee-stats-cards">Cards</li>
+      <li>Pen</li>
+    </ul>
+    <% for(let m=0; m < refInfo.matches[s].length; m++) { %>
+      <ul class="referee-stats-match">
+        <li class="referee-stats-date"><%= refInfo.matches[s][m].matchFullDate %></li>
+        <li class="referee-stats-team">
+          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= refInfo.matches[s][m].homeTeamIco %>">
+          <span class="show-on-small hide-on-med-and-up">
+            <%= refInfo.matches[s][m].homeTeamShortName %>
+            <i>(<%= refInfo.matches[s][m].stats.fouls.homeTeam %>)</i> 
+          </span>
+          <span class="hide-on-small-only">
+            <%= refInfo.matches[s][m].homeTeam %> 
+            <i>(<%= refInfo.matches[s][m].stats.fouls.homeTeam %>)</i> 
+          </span>        
+        </li>
+        <li class="referee-stats-team">
+          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= refInfo.matches[s][m].awayTeamIco %>">
+          <span class="show-on-small hide-on-med-and-up">
+            <%= refInfo.matches[s][m].awayTeamShortName %>
+            <i>(<%= refInfo.matches[s][m].stats.fouls.awayTeam %>)</i> 
+          </span>
+          <span class="hide-on-small-only">
+            <%= refInfo.matches[s][m].awayTeam %> 
+            <i>(<%= refInfo.matches[s][m].stats.fouls.awayTeam %>)</i> 
+          </span>  
+        </li>
+        <li class="referee-stats-score"><%= refInfo.matches[s][m].score %></li>
+        <li class="referee-stats-fouls">
+          <span><%= refInfo.matches[s][m].stats.fouls.match %></span>
+        </li>
+        <li class="referee-stats-yellowCards">
+          <span><%= refInfo.matches[s][m].stats.yellowCards %></span>
+        </li>
+        <li class="referee-stats-redCards">
+          <% if (refInfo.matches[s][m].stats.redCards==="yes") { %>
+            <img src="/img/redCard.png" alt="Penalty">
+          <% } %>
+        </li>
+        <li class="referee-stats-penalties">
+          <% if (refInfo.matches[s][m].stats.penalties==="yes") { %>
+            <img src="/img/penalty.png" alt="Penalty">
+          <% } %> 
+        </li>
+      </ul>    
+    <%}%>
+  </div>
+<%}%>
+</div>
+
+<script>
+  let teams = ['<%- refInfo.nextMatch.homeTeam %>', '<%- refInfo.nextMatch.awayTeam %>']
+  let seasons = document.querySelectorAll('.season-row');
+
+  $('.referee-next-match_filter li').on('click', function(){
+      let selectFilter = $(this).data('filter')
+      let filterTeams = (selectFilter!=='both')? [selectFilter] : teams
+      $('.referee-next-match_filter li').removeClass('active').eq($(this).index()).addClass('active');
+      (selectFilter!=='all')? season_filter(filterTeams): show_all()
+  })
+
+  const show_all = ()=>{
+    seasons.forEach(season=>{
+      season.querySelectorAll('.referee-stats-match').forEach(match => match.style.display = 'contents')
+      season.style.display = 'contents';
+    })
+  }
+
+  const season_filter = (filterTeams) => {
+    seasons.forEach(season=>{
+      let matches = season.querySelectorAll('.referee-stats-match');
+      let filter = 0;
+      matches.forEach(match => {
+        let el_teams;
+        match.querySelectorAll('.referee-stats-team').forEach(el=>el_teams+=el.textContent)
+
+        let show = filterTeams.some(team => el_teams.includes(team));
+        match.style.display = show? 'contents': 'none';
+        show ? filter = 1: null
+      });    
+      season.style.display = filter? 'contents': 'none';
+    })
+  }
+ 
+
+
+</script>

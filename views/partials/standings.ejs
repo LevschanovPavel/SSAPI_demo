@@ -1,0 +1,48 @@
+<%- include('match-header'); -%>
+
+<div class="tableWrapper">
+  <div class="ui-table">
+    <div class="ui-table__header">
+      <div class="ui-table__headerCell" title="Matches Played">#</div>
+      <div class="ui-table__headerCell" title="Matches Played">Team</div>
+      <div class="ui-table__headerCell" title="Matches Played">MP</div>
+      <div class="ui-table__headerCell ui-table__headerCell--sortable" role="button" tabindex="0" title="Wins">W</div>
+      <div class="ui-table__headerCell ui-table__headerCell--sortable" role="button" tabindex="0" title="Draws">D</div>
+      <div class="ui-table__headerCell ui-table__headerCell--sortable" role="button" tabindex="0" title="Losses">L</div>
+      <div class="ui-table__headerCell table__cell--score ui-table__headerCell--sortable ui-table__headerCell--sorted"
+        role="button" tabindex="0" title="Goals">G<svg class="sortArrowDown-ico table__sortArrow">
+          <title></title>
+          <use xlink:href="/res/_fs/build/symbols.6cc6aca.svg#sortArrow"></use>
+        </svg></div>
+      <div class="ui-table__headerCell table__cell--points ui-table__headerCell--sortable" role="button" tabindex="0"
+        title="Points">Pts</div>
+      <div class="ui-table__headerCell table__headerCell--form" role="button" tabindex="0" title="Last 5 matches">Form
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+.tableWrapper {
+  overflow-x: auto;
+}
+.tableWrapper:not(:last-of-type) .row:last-of-type {
+  border-bottom: none;
+}
+
+.ui-table__header {
+  display: flex;
+  user-select: none;
+  height: 29px;
+  border-bottom: 1px solid var(--color-border-4);
+}
+
+.ui-table__headerCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  background-color: var(--color-background-5);
+  text-decoration: none;
+}

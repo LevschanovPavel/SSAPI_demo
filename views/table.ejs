@@ -1,0 +1,222 @@
+
+                  <div class="table-container statsHome" id="home-tab">
+                    <table class="table is-fullwidth is-striped is-narrow is-bordered">
+                      <tbody>
+                        <tr class="stats_head">
+                          <td rowspan="2">Event</td>
+                          <td colspan="5">Match</td>
+                          <td colspan="3">1stHalf</td>
+                          <td colspan="3">2stHalf</td>
+                        </tr>
+
+                        <tr class="stats_head">
+                          <td>
+                            <a class='stats_dropdown-trigger' 
+                               data-target='total_dropdown-match'>Total</a>
+                          </td>
+                          <td>1Half</td>
+                          <td>2Half</td>
+                          <td class="stats_main" title='<%= data.matchInfo.homeTeam %>'>
+                            <div>
+                              <a class='stats_dropdown-trigger' 
+                                 data-target='total_dropdown-match--select'><%= data.matchInfo.homeTeam %></a>
+                            </div>
+                          </td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>
+                          <td>
+                            <a class='stats_dropdown-trigger' 
+                               data-target='total_dropdown-1stHalf'>Total</a>
+                          </td>
+                          <td class="stats_main" title='<%= data.matchInfo.homeTeam %>'>
+                            <div>
+                              <a class='stats_dropdown-trigger' 
+                                 data-target='total_dropdown-1stHalf--select'><%= data.matchInfo.homeTeam %></a>
+                          </div>
+                          </td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                
+                          <td>
+                            <a class='stats_dropdown-trigger' 
+                               data-target='total_dropdown-2ndHalf'>Total</a>
+                          </td>
+
+                          <td class="stats_main" title='<%= data.matchInfo.homeTeam %>'>
+                            
+                            <div>
+                              <a class='stats_dropdown-trigger' 
+                                 data-target='total_dropdown-2ndHalf--select'><%= data.matchInfo.homeTeam %></a>
+                          </div>
+                          
+                          </td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                     
+                        </tr>
+
+                        <% for(let m=0; m < data.matchStats[0].matches.length; m++) { %>
+                          <% let info = data.matchStats[0].matches[m].matchInfo %>
+                          <% let statistic = data.matchStats[0].matches[m][stats] %>
+                          
+                          <tr>
+                            <td class="stats_event tooltipped" data-position="top" data-tooltip='<%=info.tooltip %> '>
+                              <div>
+                                <span><%=info.fullDate %></span>
+                                <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+                                <span><%=info.status %></span>
+                              </div>
+                            </td>
+                            
+                            <td class="total_match" stats="compare"><%=parseInt(statistic.match.homeTeam) 
+                              + parseInt(statistic.match.awayTeam) %></td>
+                            <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                              + parseInt(statistic.firstHalf.awayTeam) %></td>
+                            <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                              + parseInt(statistic.secondHalf.awayTeam) %></td>  
+                              
+                              <td class="stats_main total_match--select" stats="compare"><%= parseInt(statistic.match.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.match.opponent) %></td>
+                            
+                              <td class="total_1stHalf" stats="compare"><%=parseInt(statistic.firstHalf.homeTeam) 
+                                + parseInt(statistic.firstHalf.awayTeam) %></td>
+
+                              
+                              <td class="stats_main total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.firstHalf.opponent) %></td>                              
+                              
+                              <td class="total_2ndHalf" stats="compare"><%=parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam) %></td>
+            
+                              
+                              <td class="stats_main total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.secondHalf.opponent) %></td>                             
+                          </tr>
+                        <% } %>  
+
+                      </tbody>
+                    </table>
+
+                    <%- include('partials/stats_dropdown'); -%>                    
+
+                  </div> 
+
+                  <div class="table-container statsAway" id="away-tab">
+                    <table class="table is-fullwidth is-striped is-narrow is-bordered">
+                      <tbody>
+                        <tr class="stats_head">
+                          <td rowspan="2">Event</td>
+                          <td colspan="5">Match</td>
+                          <td colspan="3">1stHalf</td>
+                          <td colspan="3">2stHalf</td>
+                        </tr>
+                        <tr class="stats_head">
+                          <td>Total</td>
+                          <td>1Half</td>
+                          <td>2Half</td>
+                          <td class="stats_main" title='<%= data.matchInfo.awayTeam %>'><div><%= data.matchInfo.awayTeam %></div></td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>
+
+                          <td>Total</td>
+                          <td class="stats_main" title='<%= data.matchInfo.awayTeam %>'><div><%= data.matchInfo.awayTeam %></div></td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                
+                          <td>Total</td>
+                          <td class="stats_main" title='<%= data.matchInfo.awayTeam %>'><div><%= data.matchInfo.awayTeam %></div></td>
+                          <td class="stats_opp" title='Opponent team''><div>Opponent</div></td>                     
+                        </tr>
+
+                        <% for(let m=0; m < data.matchStats[1].matches.length; m++) { %>
+                          <% let info = data.matchStats[1].matches[m].matchInfo %>
+                          <% let statistic = data.matchStats[1].matches[m][stats] %>
+                          
+                          <tr>
+                            <td class="stats_event tooltipped" data-position="top" data-tooltip='<%=info.tooltip %> '>
+                              <div>
+                                <span><%=info.fullDate %></span>
+                                <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+                                <span><%=info.status %></span>
+                              </div>
+                            </td>
+                            
+                            <td><%=parseInt(statistic.match.homeTeam) 
+                              + parseInt(statistic.match.awayTeam) %></td>
+                            <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                              + parseInt(statistic.firstHalf.awayTeam) %></td>
+                            <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                              + parseInt(statistic.secondHalf.awayTeam) %></td>  
+                              
+                              <td class="stats_main"><%= parseInt(statistic.match.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.match.opponent) %></td>
+                            
+                              <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                                + parseInt(statistic.firstHalf.awayTeam) %></td>
+                              
+                              <td class="stats_main"><%= parseInt(statistic.firstHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.firstHalf.opponent) %></td>                              
+                              
+                              <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam) %></td>
+                              
+                              <td class="stats_main"><%= parseInt(statistic.secondHalf.selectTeam) %></td> 
+                              <td><%= parseInt(statistic.secondHalf.opponent) %></td>      
+
+                          </tr>
+                        <% } %>  
+
+                      </tbody>
+                    </table>
+                  </div>                   
+
+                  <div class="table-container statsH2H" id="h2h-tab">
+                    <table class="table is-fullwidth is-striped is-narrow is-bordered">
+                      <tbody>
+                        <tr class="stats_head">
+                          <td rowspan="2">Event</td>
+                          <td colspan="4">Match</td>
+                          <td colspan="3">1stHalf</td>
+                          <td colspan="3">2stHalf</td>
+                        </tr>
+                        <tr class="stats_head">
+                          <td>Total</td>
+                          <td>HT</td>
+                          <td>AT</td>
+                          <td>MU</td>
+                          <td>Total</td>
+                          <td>HT</td>
+                          <td>AT</td>
+                          <td>Total</td>
+                          <td>HT</td>
+                          <td>AT</td>
+                        </tr>
+
+                        <% for(let m=0; m < data.matchStats[2].matches.length; m++) { %>
+                          <% let info = data.matchStats[2].matches[m].matchInfo %>
+                          <% let statistic = data.matchStats[2].matches[m][stats] %>
+                          
+                          <tr>
+                            <td class="stats_event tooltipped" data-position="top" data-tooltip='<%=info.tooltip %> '>
+                              <div>
+                                <span><%=info.fullDate %></span>
+                                <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+                                <span><%=info.status %></span>
+                              </div>
+                            </td>
+                            
+                            <td><%=parseInt(statistic.match.homeTeam) 
+                              + parseInt(statistic.match.awayTeam) %></td>
+                            <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                              + parseInt(statistic.firstHalf.awayTeam) %></td>
+                            <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                              + parseInt(statistic.secondHalf.awayTeam) %></td>  
+                              <td><%= parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam)  %></td> 
+                              <td><%=parseInt(statistic.firstHalf.homeTeam) 
+                                + parseInt(statistic.firstHalf.awayTeam) %></td>
+                              <td><%=parseInt(statistic.firstHalf.homeTeam) %></td>
+                              <td><%=parseInt(statistic.firstHalf.awayTeam) %></td>                   
+                              
+                              <td><%=parseInt(statistic.secondHalf.homeTeam) 
+                                + parseInt(statistic.secondHalf.awayTeam) %></td>
+                              <td><%=parseInt(statistic.secondHalf.homeTeam) %></td>
+                              <td><%=parseInt(statistic.secondHalf.awayTeam) %></td>                                            
+                          </tr>
+                        <% } %>  
+
+                      </tbody>
+                    </table>
+                  </div>  

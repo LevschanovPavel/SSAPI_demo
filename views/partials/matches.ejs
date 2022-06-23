@@ -1,0 +1,1151 @@
+
+
+<% if (todayMatches.length!==0) { %>
+<div id="matches-tab" class="col s12">
+  <!-- MATCHES -->
+  <div class="league-subnav" data-aos="fade-up" data-aos-delay="300">
+    <ul class="tabs">
+      <li class="tab col s4" data-tab="all_upcoming"><a href="#">All upcoming</a></li>      
+       <li class="tab col s2" data-tab="3600000"><a href="#">1 hour</a></li> 
+       <li class="tab col s2" data-tab="10800000"><a href="#">3 hour</a></li>        
+       <li class="tab col s2" data-tab="43200000"><a href="#">12 hours</a></li>
+    </ul>
+  </div>
+  <div class="today_matches_container" data-aos="fade-up" data-aos-delay="300">
+    <div class="spinner"><img src="/img/load-indicator.gif"></div>
+    <div class="not_found"><img src="/img/not_found.png"></div>
+        <ul class="collapsible">
+              <% for(let tm=0; tm < todayMatches[0].matches.length; tm++) { %>
+                <%  if (pageData.data.referees) {%>
+                  <% let refLink = todayMatches[0].matches[tm].referee.split(" (")[0] %>
+                <%}%>
+
+                <%  if (tm===0) {%>
+                  <li class="active" time='<%= todayMatches[0].matches[tm].timestamp %>'>
+                <%} else {  %>
+                  <li time='<%= todayMatches[0].matches[tm].timestamp %>'>
+                <%}%>
+                  <div class="collapsible-header">
+
+                    <div class="event" data-aos="zoom-in">
+                      <div class="time">
+                        <%= todayMatches[0].matches[tm].matchData %> 
+                        <%= todayMatches[0].matches[tm].matchTime %>
+                      </div>
+                      <div class="home_team">
+                        <img class="logo" src="https://www.soccer24.com/res/image/data/<%= todayMatches[0].matches[tm].homeTeamIco %>">
+                        <span><%= todayMatches[0].matches[tm].homeTeam %></span>
+                      </div>
+                      <div class="split"> - </div>
+                      <div class="away_team">
+                        <span><%= todayMatches[0].matches[tm].awayTeam %></span>
+                        <img class="logo" src="https://www.soccer24.com/res/image/data/<%= todayMatches[0].matches[tm].awayTeamIco %>">
+                      </div>
+                      <div class="iconStats" >
+                        <i class="material-icons" linkId='<%= todayMatches[0].matches[tm].matchId %>' title="Statistics">assessment</i>
+                      </div>    
+                    </div>
+                  </div>
+                  <div class="collapsible-body">
+                    <div class="infoWrapper" data-aos="zoom-in-right" data-aos-delay="300">
+                      <div class="odds">
+                        <div class="oddsTitle">Odds:</div>
+                        <div class="cellWrapper">
+                          <span class="cell">
+                            <span class="oddsType">1</span>
+                            <span class="oddsValue"><%= todayMatches[0].matches[tm].odds.w %></span>
+                          </span>
+                        </div>
+                        <div class="cellWrapper">
+                          <span class="cell">
+                            <span class="oddsType">X</span>
+                            <span class="oddsValue"><%= todayMatches[0].matches[tm].odds.d %></span>
+                          </span>
+                        </div>
+                        <div class="cellWrapper">
+                          <span class="cell">
+                            <span class="oddsType">2</span>
+                            <span class="oddsValue"><%= todayMatches[0].matches[tm].odds.l %></span>
+                          </span>
+                        </div>                        
+                      </div>
+                    </div>
+                    <div class="infoWrapper">
+                      <div class="matchInfo" data-aos="zoom-in-left" data-aos-delay="300">
+                        <span>Referee:</span> 
+                        <%  if (pageData.data.referees && todayMatches[0].matches[tm].referee !=="no info") {%>
+                          <% let refLink = todayMatches[0].matches[tm].referee.split(" (")[0] %>
+                          <a href="/referees?name=<%= refLink %> ">
+                            <%= todayMatches[0].matches[tm].referee %> 
+                          </a>
+                        <%} else {  %>
+                          <%= todayMatches[0].matches[tm].referee %> 
+                        <%}%>                        
+
+                        </br>
+                        <span>Venue:</span> <%= todayMatches[0].matches[tm].venue %>
+                      </div>
+                    </div>                    
+
+                    <div class="container" >
+                      <div class="section" id='<%= todayMatches[0].matches[tm].matchId %>'>
+                        <div class="header center teal-text text-lighten-2 hide-on-small-only"  data-aos="fade-up">Show Match Statistics</div>
+                                                 
+                        <!--   Icon Section   -->
+                        <div class="row show-on-small hide-on-med-and-up">
+                          
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>                            
+                          </div>
+                        </div>    
+                        
+                        <div class="all-stats center teal-text text-lighten-2 show-on-small hide-on-med-and-up"  data-aos="fade-up" data-aos-delay="600">Show all statistics</div>                   
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="shotsOnGoal" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/shots.png" alt="Shots">
+                              <span>Shots</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>
+                        </div>  
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s4 m2 offset-m1 offset-s2">
+
+                            <div class="icon-stats" stats="ballPossession" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/possession.png" alt="Ball possession">
+                              <span>Ball possession</span>
+                            </div>
+
+                          </div>
+
+                          <div class="col s4 m2 ">
+                            <div class="icon-stats" stats="yellowCards" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/yellow.png" alt="Yellow cards">
+                              <span>Yellow cards</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="offsides" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/offsides.png" alt="Offsides">
+                              <span>Offsides</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="penalties" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/penalties.png" alt="Penalties">
+                              <span>Penalties</span>
+                            </div>
+                          </div>        
+                    
+
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>
+                          </div>
+                        </div>
+                             
+                      </div>
+                    </div> 
+
+
+                  </div>
+                  </li>
+              <% } %>  
+        </ul>
+
+  </div>
+</div>
+<% } %>
+
+<% if (fixtures.length!==0) { %>
+<div id="fixtures-tab" class="col s12" >
+  <!-- FIXTURES -->
+  <div class="league-subnav" data-aos="fade-up" data-aos-delay="300">
+    <ul class="tabs">
+      <li class="tab col s3" data-tab="all_upcoming"><a href="#">All upcoming</a></li>          
+      <li class="tab col s3" data-tab="86400000"><a href="#">Tommorow</a></li>      
+      <li class="tab col s2" data-tab="259200000"><a href="#">3 days</a></li> 
+    </ul>
+  </div>  
+  <div class="today_matches_container" data-aos="fade-up" data-aos-delay="300">
+    <div class="spinner"><img src="/img/load-indicator.gif"></div>
+    <div class="not_found"><img src="/img/not_found.png"></div>
+      <ul class="collapsible">
+            <% for(let tm=0; tm < fixtures[0].matches.length; tm++) { %>
+              <%  if (tm===0) {%>
+                <li class="active" time='<%= fixtures[0].matches[tm].timestamp %>'>
+              <%} else {  %>
+                <li time='<%= fixtures[0].matches[tm].timestamp %>'>
+              <%}%>
+                <div class="collapsible-header">
+
+                  <div class="event">
+                    <div class="time">
+                      <% if (fixtures[0].matches[tm].status!=="Not started") { %>
+                        <%= fixtures[0].matches[tm].status %> 
+                      <% } else { %>
+                        <%= fixtures[0].matches[tm].matchData %> 
+                        <%= fixtures[0].matches[tm].matchTime %>                            
+                      <% } %>                      
+                    </div>                      
+                    <div class="home_team">
+                      <img class="logo" src="https://www.soccer24.com/res/image/data/<%= fixtures[0].matches[tm].homeTeamIco %>">
+                      <span><%= fixtures[0].matches[tm].homeTeam %></span>
+                    </div>
+                    <div class="split"> - </div>
+                    <div class="away_team">
+                      <span><%= fixtures[0].matches[tm].awayTeam %></span>
+                      <img class="logo" src="https://www.soccer24.com/res/image/data/<%= fixtures[0].matches[tm].awayTeamIco %>">
+                    </div>
+                    <div class="iconStats" >
+                      <i class="material-icons" linkId='<%= fixtures[0].matches[tm].matchId %>' title="Statistics">assessment</i>
+                    </div>                      
+                  </div>
+                </div>
+                <div class="collapsible-body">
+                  <div class="infoWrapper">
+                    <div class="odds">
+                      <div class="oddsTitle">Odds:</div>
+                      <div class="cellWrapper">
+                        <span class="cell">
+                          <span class="oddsType">1</span>
+                          <span class="oddsValue"><%= fixtures[0].matches[tm].odds.w %></span>
+                        </span>
+                      </div>
+                      <div class="cellWrapper">
+                        <span class="cell">
+                          <span class="oddsType">X</span>
+                          <span class="oddsValue"><%= fixtures[0].matches[tm].odds.d %></span>
+                        </span>
+                      </div>
+                      <div class="cellWrapper">
+                        <span class="cell">
+                          <span class="oddsType">2</span>
+                          <span class="oddsValue"><%= fixtures[0].matches[tm].odds.l %></span>
+                        </span>
+                      </div>                        
+                    </div>
+                  </div>
+                  <div class="infoWrapper">
+                    <div class="matchInfo">
+                      <span>Referee:</span> 
+                      <%  if (pageData.data.referees && fixtures[0].matches[tm].referee !=="no info") {%>
+                        <% let refLink = fixtures[0].matches[tm].referee.split(" (")[0] %>
+                        <a href="/referees?name=<%= refLink %> ">
+                          <%= fixtures[0].matches[tm].referee %> 
+                        </a>
+                      <%} else {  %>
+                        <%= fixtures[0].matches[tm].referee %> 
+                      <%}%>                        
+                      </br>
+                      <span>Venue:</span> <%= fixtures[0].matches[tm].venue %>
+                    </div>
+                  </div>   
+
+                  <div class="container" >
+                    <div class="section" id='<%= fixtures[0].matches[tm].matchId %>'>
+                      <div class="header center teal-text text-lighten-2 hide-on-small-only"  data-aos="fade-up">Show Match Statistics</div>   
+
+                        <!--   Icon Section   -->
+                        <div class="row show-on-small hide-on-med-and-up">
+                          
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>                            
+                          </div>
+                        </div>    
+                        
+                        <div class="all-stats center teal-text text-lighten-2 show-on-small hide-on-med-and-up"  data-aos="fade-up" data-aos-delay="600">Show all statistics</div>                   
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="shotsOnGoal" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/shots.png" alt="Shots">
+                              <span>Shots</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>
+                        </div>  
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s4 m2 offset-m1 offset-s2">
+
+                            <div class="icon-stats" stats="ballPossession" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/possession.png" alt="Ball possession">
+                              <span>Ball possession</span>
+                            </div>
+
+                          </div>
+
+                          <div class="col s4 m2 ">
+                            <div class="icon-stats" stats="yellowCards" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/yellow.png" alt="Yellow cards">
+                              <span>Yellow cards</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="offsides" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/offsides.png" alt="Offsides">
+                              <span>Offsides</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="penalties" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/penalties.png" alt="Penalties">
+                              <span>Penalties</span>
+                            </div>
+                          </div>        
+                    
+
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>
+                          </div>
+                        </div>
+                           
+                    </div>
+                  </div>                          
+                  
+                </div>
+                </li>
+            <% } %>  
+      </ul>
+</div>
+</div>   
+<% } %>
+
+<% if (table) { %>
+  <div id="standings-tab">
+
+    <div class="col s12">
+      <div class="league-subnav">
+        <ul class="tabs">
+           <li class="tab col s2"><a href="#overall-tab">Overall</a></li>
+           <li class="tab col s2"><a href="#home-tab">Home</a></li> 
+           <li class="tab col s2"><a href="#away-tab">Away</a></li>
+        </ul>
+      </div>
+
+  <div id="overall-tab" class="col s12">
+    <div class="standings">
+      <ul class="standings_row th_cell">
+        <li title="Rank">#</li>
+        <li class="team_">Team</li>
+        <li title="Points">Pts</li> 
+        <li title="Matches Played">MP</li>
+        <li title="Wins">W</li>
+        <li title="Draws">D</li>
+        <li title="Losses">L</li>
+        <li title="Goals">G</li>
+ 
+        <li title="Next Matches">
+          <span class="show-on-small hide-on-med-and-up">N</span>
+          <span class="hide-on-small-only">Next</span>          
+        </li>   
+      </ul>
+
+      <% for(let s=0; s < table.overall.length; s++) { %>
+        <ul class="standings_row">
+          <li class='rank_<%= table.overall[s].positionCode %>'><%= table.overall[s].rank %>.</li>
+          <li class="standings_team-logo">
+            <img src="https://www.soccer24.com/res/image/data/<%= table.overall[s].teamLogo %>">
+          </li>
+          <li class="standings_team-name"><div><%= table.overall[s].teamName %></div></li>
+          <li class="standings_points">
+            <span><%= table.overall[s].points %></span>
+          </li>          
+          <li><%= table.overall[s].matchesPlayed %></li>
+          <li><%= table.overall[s].wins %></li>
+          <li><%= table.overall[s].draws %></li>
+          <li><%= table.overall[s].losses %></li>
+          <li><%= table.overall[s].goals %></li>
+          <li class="standings_next tooltipped" 
+          data-position="top" 
+          data-tooltip='<i>Next match</i><br/><%= table.overall[s].nextMatch.title %><br/><span>(<%= table.overall[s].nextMatch.matchDate %>)</span>'>
+
+            <div class="show-on-small hide-on-med-and-up" >
+                 <div>?</div>
+            </div>
+            <div class="hide-on-small-only"><%= table.overall[s].nextMatch.title %>
+            <span>(<%= table.overall[s].nextMatch.matchDate %>)</span></div>
+          </li>     
+        </ul>
+      <% } %>
+      
+    </div>
+    <div class="standings_info">
+      <ul>
+        <% let arr = Object.keys(table.info) %>
+        <% for(let i=0; i < arr.length; i++) { %>
+          <li><span class='rank_<%=arr[i]%>'></span><%=table.info[arr[i]]%></li>
+        <% } %>  
+      </ul>       
+    </div>
+  </div>
+  <div id="home-tab" class="col s12">
+    <div class="standings">
+      <ul class="standings_row th_cell">
+        <li title="Rank">#</li>
+        <li class="team_">Team</li>
+        <li title="Points">Pts</li> 
+        <li title="Matches Played">MP</li>
+        <li title="Wins">W</li>
+        <li title="Draws">D</li>
+        <li title="Losses">L</li>
+        <li title="Goals">G</li>
+ 
+        <li title="Next Matches">
+          <span class="show-on-small hide-on-med-and-up">N</span>
+          <span class="hide-on-small-only">Next</span>          
+        </li>   
+      </ul>
+
+      <% for(let s=0; s < table.home.length; s++) { %>
+        <ul class="standings_row">
+          <li class='rank_'><%= table.home[s].rank %>.</li>
+          <li class="standings_team-logo">
+            <img src="https://www.soccer24.com/res/image/data/<%= table.home[s].teamLogo %>">
+          </li>
+          <li class="standings_team-name"><div><%= table.home[s].teamName %></div></li>
+          <li class="standings_points">
+            <span><%= table.home[s].points %></span>
+          </li>          
+          <li><%= table.home[s].matchesPlayed %></li>
+          <li><%= table.home[s].wins %></li>
+          <li><%= table.home[s].draws %></li>
+          <li><%= table.home[s].losses %></li>
+          <li><%= table.home[s].goals %></li>
+          <li class="standings_next tooltipped" 
+          data-position="top" 
+          data-tooltip='<i>Next match</i><br/><%= table.home[s].nextMatch.title %><br/><span>(<%= table.home[s].nextMatch.matchDate %>)</span>'>
+
+            <div class="show-on-small hide-on-med-and-up" >
+                 <div>?</div>
+            </div>
+            <div class="hide-on-small-only"><%= table.home[s].nextMatch.title %>
+            <span>(<%= table.home[s].nextMatch.matchDate %>)</span></div>
+          </li>     
+        </ul>
+      <% } %>
+      
+    </div>    
+  </div>
+  <div id="away-tab" class="col s12">
+    <div class="standings">
+      <ul class="standings_row th_cell">
+        <li title="Rank">#</li>
+        <li class="team_">Team</li>
+        <li title="Points">Pts</li> 
+        <li title="Matches Played">MP</li>
+        <li title="Wins">W</li>
+        <li title="Draws">D</li>
+        <li title="Losses">L</li>
+        <li title="Goals">G</li>
+ 
+        <li title="Next Matches">
+          <span class="show-on-small hide-on-med-and-up">N</span>
+          <span class="hide-on-small-only">Next</span>          
+        </li>   
+      </ul>
+
+      <% for(let s=0; s < table.away.length; s++) { %>
+        <ul class="standings_row">
+          <li class='rank_'><%= table.away[s].rank %>.</li>
+          <li class="standings_team-logo">
+            <img src="https://www.soccer24.com/res/image/data/<%= table.away[s].teamLogo %>">
+          </li>
+          <li class="standings_team-name"><div><%= table.away[s].teamName %></div></li>
+          <li class="standings_points">
+            <span><%= table.away[s].points %></span>
+          </li>          
+          <li><%= table.away[s].matchesPlayed %></li>
+          <li><%= table.away[s].wins %></li>
+          <li><%= table.away[s].draws %></li>
+          <li><%= table.away[s].losses %></li>
+          <li><%= table.away[s].goals %></li>
+          <li class="standings_next tooltipped" 
+          data-position="top" 
+          data-tooltip='<i>Next match</i><br/><%= table.away[s].nextMatch.title %><br/><span>(<%= table.away[s].nextMatch.matchDate %>)</span>'>
+
+            <div class="show-on-small hide-on-med-and-up" >
+                 <div>?</div>
+            </div>
+            <div class="hide-on-small-only"><%= table.away[s].nextMatch.title %>
+            <span>(<%= table.away[s].nextMatch.matchDate %>)</span></div>
+          </li>     
+        </ul>
+      <% } %>
+      
+    </div>
+  </div>
+
+   </div>
+  </div>
+<% } %>
+
+
+  <div id="latest-tab" class="col s12 latestScores">
+    <!-- Latest Scores -->
+    
+    <div class="league-subnav">
+      <ul class="tabs">
+         <li class="tab col s6"><a href="#scores-tab">Scores</a></li>
+         <li class="tab col s6"><a href="#statistics-tab">Statistics</a></li> 
+      </ul>
+    </div>
+    <div id="scores-tab">
+      <div class="today_matches_container">
+          <ul class="collapsible">
+                <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                  <%  if (tm===0) {%>
+                    <li class="active">
+                  <%} else {  %>
+                    <li>
+                  <%}%>
+                    <div class="collapsible-header">
+    
+                      <div class="event">
+                        <div class="time">
+                          <%= latestScores[0].matches[tm].matchData %> 
+                          <%= latestScores[0].matches[tm].matchTime %>
+                        </div>
+                        <div class="home_team">
+                          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= latestScores[0].matches[tm].homeTeamIco %>">
+                          <span><%= latestScores[0].matches[tm].homeTeam %></span>
+                        </div>
+                        <div class="split"> 
+                          <%= latestScores[0].matches[tm].summary.scoreFinal.homeTeam %> - 
+                          <%= latestScores[0].matches[tm].summary.scoreFinal.awayTeam %> 
+                        </div>
+                        <div class="away_team">
+                          <span><%= latestScores[0].matches[tm].awayTeam %></span>
+                          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= latestScores[0].matches[tm].awayTeamIco %>">
+                        </div>
+                        <div class="iconStats" >
+                          <i class="material-icons" linkId='<%= latestScores[0].matches[tm].matchId %>' title="Statistics">assessment</i>
+                        </div>                      
+                      </div>
+                    </div>
+                    <div class="collapsible-body">
+                      <div class="infoWrapper">
+                        <div class="odds"
+                          score_home='<%= latestScores[0].matches[tm].summary.scoreFinal.homeTeam %>' 
+                          score_away='<%= latestScores[0].matches[tm].summary.scoreFinal.awayTeam %>'
+                        >
+                          <div class="oddsTitle">Odds:</div>
+                          <div class="cellWrapper">
+                            <span class="cell">
+                              <span class="oddsType">1</span>
+                              <span class="oddsValue"><%= latestScores[0].matches[tm].odds.w %></span>
+                            </span>
+                          </div>
+                          <div class="cellWrapper">
+                            <span class="cell">
+                              <span class="oddsType">X</span>
+                              <span class="oddsValue"><%= latestScores[0].matches[tm].odds.d %></span>
+                            </span>
+                          </div>
+                          <div class="cellWrapper">
+                            <span class="cell">
+                              <span class="oddsType">2</span>
+                              <span class="oddsValue"><%= latestScores[0].matches[tm].odds.l %></span>
+                            </span>
+                          </div>                        
+                        </div>
+                      </div>
+                      <div class="infoWrapper">
+                        <div class="matchInfo">
+                          <span>Referee:</span> <%= latestScores[0].matches[tm].summary.referee %> </br>
+                          <span>Venue:</span> <%= latestScores[0].matches[tm].summary.venue %>
+                        </div>
+                      </div>   
+                        
+                      
+                    </div>
+                    </li>
+                <% } %>  
+          </ul>
+      </div>
+    </div>
+
+    <div id="statistics-tab">
+      <div class="latest_matches_table">
+        <div class="latest_matches_nav">
+          <ul class="tabs">
+            <li class="tab col s4"><a href="#total-tab"><span>Total</span></a></li> 
+            <li class="tab col s4"><a href="#corners-tab"><span>Corners</span></a></li>
+            <li class="tab col s4"><a href="#goals-tab"><span>Goals</span></a></li>
+            <li class="tab col s4"><a href="#fouls-tab"><span>Fouls</span></a></li> 
+            <li class="tab col s4"><a href="#cards-tab"><span>Cards</span></a></li>
+            <li class="tab col s4"><a href="#throw-tab"><span>Throw-in</span></a></li>
+
+         </ul>
+        </div>
+        <div class="latest_matches_events">
+          <ul class="latest_matches_row">
+            <li class="latest_matches_th--events">Events</li>
+          </ul>
+          <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+            <% let match = latestScores[0].matches[tm] %> 
+              <ul class="latest_matches_row">
+                <li class="latest_matches_td--date"><span><%= match.matchData %></span> <%= match.matchTime %></li>
+                <li class="latest_matches_td--logo"><img src='<%= match.matchLogo %>'></li>
+                
+                <li class="latest_matches_td--teams">
+                  <span class="show-on-small hide-on-med-and-up"><%= match.homeTeamShortName %></span>
+                  <span class="hide-on-small-only"><%= match.homeTeam %></span> &nbsp;-&nbsp;
+                  <span class="show-on-small hide-on-med-and-up"> <%= match.awayTeamShortName %></span>
+                  <span class="hide-on-small-only"><%= match.awayTeam %></span>                          
+                </li> 
+       
+              </ul>
+            <% } %> 
+        </div>
+        <div class="latest_matches_stats">
+          <div id="total-tab">
+            <div class="latest_matches_stats_table">
+              <ul class="latest_matches_row">
+                <li class="latest_matches_stats_th--match">
+                  <span>Match</span>
+                  <i>Total</i><i>HT</i><i>AT</i>
+                </li>
+                <li class="latest_matches_stats_th--1stHalf">
+                  <span>1stHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                  
+                </li>
+                <li class="latest_matches_stats_th--2ndHalf">
+                  <span>2ndHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                    
+                </li>
+              </ul>
+              <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                <% let summary = latestScores[0].matches[tm].summary %>
+                <ul class="latest_matches_row lms_data">
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(summary.scoreFinal.homeTeam) 
+                       + parseInt(summary.scoreFinal.awayTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(summary.scoreFinal.homeTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%= parseInt(summary.scoreFinal.awayTeam) %>
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%=parseInt(summary.scoreFirstHalf.homeTeam) 
+                       + parseInt(summary.scoreFirstHalf.awayTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(summary.scoreFirstHalf.homeTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(summary.scoreFirstHalf.awayTeam) %>                    
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(summary.scoreSecondHalf.homeTeam) 
+                       + parseInt(summary.scoreSecondHalf.awayTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(summary.scoreSecondHalf.homeTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%= parseInt(summary.scoreSecondHalf.awayTeam) %>                  
+                  </li>                                    
+                </ul>
+                  
+              <% } %>             
+            </div>            
+          </div>
+          <div id="corners-tab">
+            <div class="latest_matches_stats_table">
+              <ul class="latest_matches_row">
+                <li class="latest_matches_stats_th--match">
+                  <span>Match</span>
+                  <i>Total</i><i>HT</i><i>AT</i>
+                </li>
+                <li class="latest_matches_stats_th--1stHalf">
+                  <span>1stHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                  
+                </li>
+                <li class="latest_matches_stats_th--2ndHalf">
+                  <span>2ndHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                    
+                </li>
+              </ul>
+              <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                <% let stats = latestScores[0].matches[tm].stats %>
+                <ul class="latest_matches_row lms_data">
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(stats.cornerKicks.match.homeTeam) 
+                       + parseInt(stats.cornerKicks.match.awayTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(stats.cornerKicks.match.homeTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%= parseInt(stats.cornerKicks.match.awayTeam) %>
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%=parseInt(stats.cornerKicks.firstHalf.homeTeam) 
+                       + parseInt(stats.cornerKicks.firstHalf.awayTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(stats.cornerKicks.firstHalf.homeTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(stats.cornerKicks.firstHalf.awayTeam) %>                    
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(stats.cornerKicks.secondHalf.homeTeam) 
+                       + parseInt(stats.cornerKicks.secondHalf.awayTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(stats.cornerKicks.secondHalf.homeTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%= parseInt(stats.cornerKicks.secondHalf.awayTeam) %>                  
+                  </li>                                    
+                </ul>
+                  
+              <% } %>             
+            </div>
+          </div>
+          <div id="goals-tab"> 
+            <div class="latest_matches_stats_table">
+              <ul class="latest_matches_row">
+                <li class="latest_matches_stats_th--time">Time</br>1st goal</li>
+                <li class="latest_matches_stats_th--both_score">Both</br>teams</br>to score</li>
+                <li class="latest_matches_stats_th--scored_in">
+                  <span>Goal Scored in</span>
+                  <i>both halves</i><i>1stHalf</i><i>2ndHalf</i>                    
+                </li>
+              </ul>
+              <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                <% let goals = latestScores[0].matches[tm].stats.goals %>
+                <ul class="latest_matches_row lmsd_goals">
+                  <li class="latest_matches_stats_td--time">
+                    <%= goals.time1stGoal %>
+                  </li>
+                  <li class="latest_matches_stats_td--goals">
+                    <% if (goals.bothScore==="yes") { %>
+                      <i class="material-icons">done</i>
+                    <% } %>
+                  </li>
+
+                  <li class="latest_matches_stats_td--goals">
+                    <% if (goals.scoreBothHalves==="yes") { %>
+                      <i class="material-icons">done</i>
+                    <% } %>             
+                  </li>
+                  <li class="latest_matches_stats_td--goals">
+                    <% if (goals.goalIn1Half==="yes") { %>
+                      <i class="material-icons">done</i>
+                    <% } %>               
+                  </li>
+                  <li class="latest_matches_stats_td--goals">
+                    <% if (goals.goalIn2Half==="yes") { %>
+                      <i class="material-icons">done</i>
+                    <% } %>               
+                  </li>                                    
+                </ul>
+                  
+              <% } %>             
+            </div>                 
+          </div>         
+          <div id="fouls-tab">
+            <div class="latest_matches_stats_table">
+              <ul class="latest_matches_row">
+                <li class="latest_matches_stats_th--match">
+                  <span>Match</span>
+                  <i>Total</i><i>HT</i><i>AT</i>
+                </li>
+                <li class="latest_matches_stats_th--1stHalf">
+                  <span>1stHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                  
+                </li>
+                <li class="latest_matches_stats_th--2ndHalf">
+                  <span>2ndHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                    
+                </li>
+              </ul>
+              <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                <% let stats = latestScores[0].matches[tm].stats %>
+                <ul class="latest_matches_row lms_data">
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(stats.fouls.match.homeTeam) 
+                       + parseInt(stats.fouls.match.awayTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(stats.fouls.match.homeTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%= parseInt(stats.fouls.match.awayTeam) %>
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%=parseInt(stats.fouls.firstHalf.homeTeam) 
+                       + parseInt(stats.fouls.firstHalf.awayTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(stats.fouls.firstHalf.homeTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(stats.fouls.firstHalf.awayTeam) %>                    
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(stats.fouls.secondHalf.homeTeam) 
+                       + parseInt(stats.fouls.secondHalf.awayTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(stats.fouls.secondHalf.homeTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%= parseInt(stats.fouls.secondHalf.awayTeam) %>                  
+                  </li>                                    
+                </ul>
+                  
+              <% } %>             
+            </div>
+
+          </div>
+          <div id="cards-tab">
+            <div class="latest_matches_stats_table">
+              <ul class="latest_matches_row">
+                <li class="latest_matches_stats_th--penalty">Penalty</li>
+                <li class="latest_matches_stats_th--red">Red card</li>
+                <li class="latest_matches_stats_th--yellow">
+                  <span>Yellow cards</span>
+                  <i>Total</i><i>1stHalf</i><i>2ndHalf</i>                    
+                </li>
+              </ul>
+              <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                <% let stats = latestScores[0].matches[tm].stats %>
+                <ul class="latest_matches_row lmsd_cards">
+                  <li class="latest_matches_stats_td--match">
+                    <% if (stats.penalties.event==="yes") { %>
+                      <img src="/img/penalty.png" alt="Penalty">
+                    <% } %>                    
+                    
+                  </li>
+                  <li class="latest_matches_stats_td--red">
+                    <% if (stats.redCards.event==="yes") { %>
+                      <span>&nbsp;&nbsp;</span>
+                    <% } %>
+                  </li>
+
+                  <li class="latest_matches_stats_td--yellow">
+                    <span><%=parseInt(stats.yellowCards.match.homeTeam) 
+                       + parseInt(stats.yellowCards.match.awayTeam) %></span>                
+                  </li>
+                  <li class="latest_matches_stats_td--yellow">
+                    <%=parseInt(stats.yellowCards.firstHalf.homeTeam) 
+                       + parseInt(stats.yellowCards.firstHalf.awayTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--yellow">
+                    <%=parseInt(stats.yellowCards.secondHalf.homeTeam) 
+                       + parseInt(stats.yellowCards.secondHalf.awayTeam) %>                  
+                  </li>                                    
+                </ul>
+                  
+              <% } %>             
+            </div>            
+          </div>
+          <div id="throw-tab">
+            <div class="latest_matches_stats_table">
+              <ul class="latest_matches_row">
+                <li class="latest_matches_stats_th--match">
+                  <span>Match</span>
+                  <i>Total</i><i>HT</i><i>AT</i>
+                </li>
+                <li class="latest_matches_stats_th--1stHalf">
+                  <span>1stHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                  
+                </li>
+                <li class="latest_matches_stats_th--2ndHalf">
+                  <span>2ndHalf</span>
+                  <i>Total</i><i>HT</i><i>AT</i>                    
+                </li>
+              </ul>
+              <% for(let tm=0; tm < latestScores[0].matches.length; tm++) { %>
+                <% let stats = latestScores[0].matches[tm].stats %>
+                <ul class="latest_matches_row lms_data">
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(stats.throwIns.match.homeTeam) 
+                       + parseInt(stats.throwIns.match.awayTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%=parseInt(stats.throwIns.match.homeTeam) %>
+                  </li>
+                  <li class="latest_matches_stats_td--match">
+                    <%= parseInt(stats.throwIns.match.awayTeam) %>
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%=parseInt(stats.throwIns.firstHalf.homeTeam) 
+                       + parseInt(stats.throwIns.firstHalf.awayTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(stats.throwIns.firstHalf.homeTeam) %>                    
+                  </li>
+                  <li class="latest_matches_stats_td--1stHalf">
+                    <%= parseInt(stats.throwIns.firstHalf.awayTeam) %>                    
+                  </li>                  
+
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(stats.throwIns.secondHalf.homeTeam) 
+                       + parseInt(stats.throwIns.secondHalf.awayTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%=parseInt(stats.throwIns.secondHalf.homeTeam) %>                  
+                  </li>
+                  <li class="latest_matches_stats_td--2ndHalf">
+                    <%= parseInt(stats.throwIns.secondHalf.awayTeam) %>                  
+                  </li>                                    
+                </ul>
+                  
+              <% } %>             
+            </div>
+          </div>         
+        </div>
+       
+ 
+      </div>
+    </div>
+
+  </div>   
+
+
+  <script>
+    let champMatches = document.querySelectorAll('#matches-tab .collapsible li')
+    let spinner = document.querySelector('#matches-tab .spinner')
+    let not_found = document.querySelector('#matches-tab .not_found')
+    // console.log(champsToday)
+
+    $('#matches-tab .tabs li').on('click', function(){
+      let selectTime = $(this).data('tab')
+      let currentTime = Date.now();
+      let findMatch = false;
+      spinner.style.display = 'block'
+      not_found.style.display = 'none'
+
+      champMatches.forEach((el,idx,array)=>{
+          let diff = el.getAttribute("time")*1000 - currentTime 
+          console.log("el",el)
+          el.style.display = 'none'
+
+          if (diff > selectTime || diff < 0) {
+            el.style.display = 'none'
+          } else {
+            findMatch = true
+            setTimeout(()=>{
+              spinner.style.display = 'none'
+              el.style.display = 'grid'
+            },1000)
+          }
+        })
+
+        if (!findMatch){
+        setTimeout(()=>{
+          spinner.style.display = 'none'
+          not_found.style.display = 'block'
+        },1000)
+    }
+
+    })
+
+  </script>
+
+<script>
+  let champFixturesMatches = document.querySelectorAll('#fixtures-tab .collapsible li')
+  let spinner_fixt = document.querySelector('#fixtures-tab .spinner')
+  let not_found_fixt = document.querySelector('#fixtures-tab .not_found')
+  // console.log(champsToday)
+
+  $('#fixtures-tab .tabs li').on('click', function(){
+    let selectTime = $(this).data('tab')
+    let currentDate = new Date().setHours(0, 0, 0, 0) + 86400000;
+    let findMatch = false;
+    spinner_fixt.style.display = 'block'
+    not_found_fixt.style.display = 'none'
+
+    champFixturesMatches.forEach((el,idx,array)=>{
+      let diff = currentDate + selectTime - el.getAttribute("time")*1000 
+      el.style.display = 'none'
+
+      if (diff < 0 ) {
+          el.style.display = 'none'
+        } else {
+          findMatch = true
+          setTimeout(()=>{
+            spinner_fixt.style.display = 'none'
+            el.style.display = 'grid'
+          },1000)
+          }
+      })
+
+      if (!findMatch){
+      setTimeout(()=>{
+        spinner_fixt.style.display = 'none'
+        not_found_fixt.style.display = 'block'
+      },1000)
+  }
+
+  })
+
+</script>
+
+<script>
+  // var events = document.getElementsByClassName('event');
+  let events = document.getElementsByClassName('icon-stats');
+  let allStats = document.getElementsByClassName('all-stats');
+  let iconStats = document.querySelectorAll('.iconStats>.material-icons');
+  let leagueId = '<%= leagueId %>';
+  let country = '<%= country %>';
+  for(var i = 0; i < iconStats.length; i++)
+    iconStats[i].onclick = function() {
+      let matchId = this.getAttribute('linkId')
+      location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+    }
+
+  for(var i = 0; i < allStats.length; i++)
+    allStats[i].onclick = function() {
+      let parent = this.closest('.section');
+      let matchId = parent.id
+      location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+    }
+
+  for(var i = 0; i < events.length; i++)
+    events[i].onclick = function() {
+      let parent = this.closest('.section');
+      let matchId = parent.id
+      let stat = this.getAttribute('stats')
+      if (stat==="matches") {
+        location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+      } else {
+        location.assign(`/${country}/${leagueId}/match?id=${matchId}&stats=${stat}`)
+      }
+    };
+  
+</script>
+
+<script>
+  
+   let el_wdl = document.querySelector("#latest-tab").querySelectorAll(".odds")
+   
+   el_wdl.forEach((el,idx)=>{
+     let ht_score = el.getAttribute("score_home"),
+         at_score = el.getAttribute("score_away"),
+         odds = el.querySelectorAll(".cell")
+         
+        if (ht_score-at_score > 0) odds[0].classList.add("bg_yellow");              
+        if (ht_score-at_score === 0) odds[1].classList.add("bg_yellow");
+        if (ht_score-at_score < 0) odds[2].classList.add("bg_yellow");
+   })
+</script>   

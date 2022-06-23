@@ -1,0 +1,354 @@
+<div id="home1-tab" class="statsHome" team='<%= data.matchInfo.homeTeam %>'>
+ 
+  <div class="summary_table--row">
+    <div class="summary_th--match">
+      <span class="showOverall waves-effect waves-light press">Overall</span>
+      <span class="showHome waves-effect waves-light"><%= data.matchInfo.homeTeam %> - Home</span>
+      <span class="showAway waves-effect waves-light"><%= data.matchInfo.homeTeam %> - Away</span>
+    </div>
+    <!-- Score -->
+    <div class="summary_th--matchScore" title=''>Score</div>
+    <div class="summary_th--1stHalf" title=''>1st Half</div>  
+    <div class="summary_th--2ndHalf" title=''>2nd Half</div>   
+
+    <!-- Odds -->
+    <div class="summary_th--odds-w" title=''>1</div>
+    <div class="summary_th--odds-d" title=''>X</div> 
+    <div class="summary_th--odds-l" title=''>2</div>  
+  </div>
+
+    <% for(let m=0; m < data.matchStats[0].matches.length; m++) { %>
+      <% let info = data.matchStats[0].matches[m].matchInfo %>
+      <% let stats = data.matchStats[0].matches[m].stats %>
+      <% let odds = data.matchStats[0].matches[m].odds %>
+      <% let result = stats.goals.match.homeTeam - stats.goals.match.awayTeam %>
+      <% let homeTeam = data.matchInfo.homeTeam %>
+      <% let awayTeam = data.matchInfo.awayTeam %>
+    
+    <div class="summary_table--row">    
+      
+      <div class="stats_td--event tooltipped" 
+           data-position="top" 
+           data-tooltip='<span><%= info.fullDate %></span> <%= info.tooltip %>'>
+        <div>
+          <span class="stats_td--date"><%=info.fullDate %></span>
+          <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+          <span class="stats_td--status"><%=info.status %></span>
+        </div>
+      </div>
+  
+  
+      <div class="summary_td--homeTeam"><%=info.homeTeam %></div> 
+      <div class="summary_td--awayTeam"><%=info.awayTeam %></div>
+    
+      <div class="summary_td--wdl"><span class="wdl"></span></div> 
+      <div class="summary_td--score">
+        <%=stats.goals.match.homeTeam %> : <%=stats.goals.match.awayTeam %>
+      </div>                              
+      <div class="summary_td--1stHalf">
+        <%=stats.goals.firstHalf.homeTeam %> : <%=stats.goals.firstHalf.awayTeam %>
+      </div> 
+      <div class="summary_td--2ndHalf">
+        <%=stats.goals.secondHalf.homeTeam %> : <%=stats.goals.secondHalf.awayTeam %>
+      </div>        
+
+      <div class="summary_td--odds" result='<%= result %>'>
+        <span class="win"><%=odds.w %></span></div>       
+      <div class="summary_td--odds" result='<%= result %>'>
+        <span class="draw"><%=odds.d %></span></div>      
+      <div class="summary_td--odds" result='<%= result %>'>
+        <span class="lose"><%=odds.l %></span></div>  
+      </div>
+    <% } %>    
+</div>
+
+<div id="away1-tab" class="statsAway" team='<%= data.matchInfo.awayTeam %>'>
+
+  <div class="summary_table--row">
+    <!-- <div class="stats_table--event">Event</div> -->
+    <div class="summary_th--match">
+      <span class="showOverall waves-effect waves-light press">Overall</span>
+      <span class="showHome waves-effect waves-light"><%= data.matchInfo.awayTeam %> - Home</span>
+      <span class="showAway waves-effect waves-light"><%= data.matchInfo.awayTeam %> - Away</span>
+    </div>    
+    <!-- Score -->
+    <div class="summary_th--matchScore" title=''>Score</div>
+    <div class="summary_th--1stHalf" title=''>1st Half</div>  
+    <div class="summary_th--2ndHalf" title=''>2nd Half</div>   
+
+    <!-- Odds -->
+    <div class="summary_th--odds-w" title=''>1</div>
+    <div class="summary_th--odds-d" title=''>X</div> 
+    <div class="summary_th--odds-l" title=''>2</div>  
+  </div>
+
+    <% for(let m=0; m < data.matchStats[1].matches.length; m++) { %>
+      <% let info = data.matchStats[1].matches[m].matchInfo %>
+      <% let stats = data.matchStats[1].matches[m].stats %>
+      <% let odds = data.matchStats[1].matches[m].odds %>
+      <% let result = stats.goals.match.homeTeam - stats.goals.match.awayTeam %>
+      <% let homeTeam = data.matchInfo.homeTeam %>
+      <% let awayTeam = data.matchInfo.awayTeam %>
+
+      <div class="summary_table--row">    
+        <div class="stats_td--event tooltipped" 
+             data-position="top" 
+             data-tooltip='<span><%= info.fullDate %></span> <%= info.tooltip %>'>
+          <div>
+            <span class="stats_td--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="stats_td--status"><%=info.status %></span>
+          </div>
+        </div>
+    
+    
+        <div class="summary_td--homeTeam"><%=info.homeTeam %></div> 
+        <div class="summary_td--awayTeam"><%=info.awayTeam %></div>
+      
+        <div class="summary_td--wdl"><span class="wdl"></span></div> 
+        <div class="summary_td--score">
+          <%=stats.goals.match.homeTeam %> : <%=stats.goals.match.awayTeam %>
+        </div>                              
+        <div class="summary_td--1stHalf">
+          <%=stats.goals.firstHalf.homeTeam %> : <%=stats.goals.firstHalf.awayTeam %>
+        </div> 
+        <div class="summary_td--2ndHalf">
+          <%=stats.goals.secondHalf.homeTeam %> : <%=stats.goals.secondHalf.awayTeam %>
+        </div>        
+  
+        <div class="summary_td--odds" result='<%= result %>'>
+          <span class="win"><%=odds.w %></span></div>       
+        <div class="summary_td--odds" result='<%= result %>'>
+          <span class="draw"><%=odds.d %></span></div>      
+        <div class="summary_td--odds" result='<%= result %>'>
+          <span class="lose"><%=odds.l %></span></div>  
+        </div>
+    <% } %>       
+</div>
+  
+
+<div id="h2h1-tab" class="statsH2H" team='<%= data.matchInfo.homeTeam %>'>  
+  <div class="summary_table--row">
+    <!-- <div class="stats_table--event">Event</div> -->
+    <div class="summary_th--match">Match</div>
+    <!-- Score -->
+    <div class="summary_th--matchScore" title=''>Score</div>
+    <div class="summary_th--1stHalf" title=''>1st Half</div>  
+    <div class="summary_th--2ndHalf" title=''>2nd Half</div>   
+
+    <!-- Odds -->
+    <div class="summary_th--odds-w" title=''>1</div>
+    <div class="summary_th--odds-d" title=''>X</div> 
+    <div class="summary_th--odds-l" title=''>2</div>  
+  </div> 
+    
+    <% for(let m=0; m < data.matchStats[2].matches.length; m++) { %>
+      <% let info = data.matchStats[2].matches[m].matchInfo %>
+      <% let stats = data.matchStats[2].matches[m].stats %>
+      <% let odds = data.matchStats[2].matches[m].odds %>
+      <% let result = stats.goals.match.homeTeam - stats.goals.match.awayTeam %>
+      <% let homeTeam = data.matchInfo.homeTeam %>
+      <% let awayTeam = data.matchInfo.awayTeam %>
+    
+      <div class="summary_table--row">    
+        <div class="stats_td--event tooltipped" 
+             data-position="top" 
+             data-tooltip='<span><%= info.fullDate %></span> <%= info.tooltip %>'>
+          <div>
+            <span class="stats_td--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="stats_td--status"><%=info.status %></span>
+          </div>
+        </div>
+    
+    
+        <div class="summary_td--homeTeam"><%=info.homeTeam %></div> 
+        <div class="summary_td--awayTeam"><%=info.awayTeam %></div>
+      
+        <div class="summary_td--wdl"><span class="wdl"></span></div> 
+        <div class="summary_td--score">
+          <%=stats.goals.match.homeTeam %> : <%=stats.goals.match.awayTeam %>
+        </div>                              
+        <div class="summary_td--1stHalf">
+          <%=stats.goals.firstHalf.homeTeam %> : <%=stats.goals.firstHalf.awayTeam %>
+        </div> 
+        <div class="summary_td--2ndHalf">
+          <%=stats.goals.secondHalf.homeTeam %> : <%=stats.goals.secondHalf.awayTeam %>
+        </div>        
+  
+        <div class="summary_td--odds" result='<%= result %>'>
+          <span class="win"><%=odds.w %></span></div>       
+        <div class="summary_td--odds" result='<%= result %>'>
+          <span class="draw"><%=odds.d %></span></div>      
+        <div class="summary_td--odds" result='<%= result %>'>
+          <span class="lose"><%=odds.l %></span></div>  
+        </div>
+    <% } %>    
+</div>
+
+  <script>
+     let statsHome_elem = document.querySelector(".statsHome"),
+         statsAway_elem = document.querySelector(".statsAway"),
+         statsH2H_elem = document.querySelector(".statsH2H")
+
+     const backlight_winner = (el) => {
+       let el_wdl = el.querySelectorAll(".summary_table--row>.summary_td--wdl")
+       let select_team = el.getAttribute("team")
+       
+
+       let el_win = el.querySelectorAll(".win")
+       let el_draw = el.querySelectorAll(".draw")
+       let el_lose = el.querySelectorAll(".lose")
+       
+       el_wdl.forEach((el,idx)=>{
+          let score = el.parentElement.querySelector(".summary_td--score").innerHTML.split(":"),
+              home_team = el.parentElement.querySelector(".summary_td--homeTeam"),
+              away_team = el.parentElement.querySelector(".summary_td--awayTeam"),            
+              team = away_team.innerHTML,
+              { 0:ht_score, 1:at_score } = score,
+              child = el.firstElementChild;
+
+          
+          (team===select_team)?away_team.classList.add("color_team"):home_team.classList.add("color_team")
+
+          if (ht_score-at_score === 0) { 
+            let odd = el_draw[idx];
+            child.innerHTML="D"; 
+            child.classList.add("wld--d");
+            (+odd.innerHTML > 4)? odd.classList.add("bg_draw"): odd.classList.add("bg_yellow")
+          }
+
+          if (ht_score-at_score < 0) { 
+            let odd = el_lose[idx];
+            (team===select_team)? child.innerHTML="W": child.innerHTML="L"; 
+            (team===select_team)? child.classList.add("wld--w"): child.classList.add("wld--l"); 
+            
+            if (+odd.innerHTML > 5){
+              (team===select_team)? odd.classList.add("bg_win"): odd.classList.add("bg_lose")
+            } else if (+odd.innerHTML > 4){
+              (team===select_team)? odd.classList.add("bg_win2"): odd.classList.add("bg_lose2")
+            } else {
+              odd.classList.add("bg_yellow")
+            }
+
+          }
+          if (ht_score-at_score > 0) { 
+            let odd = el_win[idx];
+            (team===select_team)? child.innerHTML="L": child.innerHTML="W"; 
+            (team===select_team)? child.classList.add("wld--l"): child.classList.add("wld--w"); 
+            
+            if (+odd.innerHTML > 5){
+              (team===select_team)? odd.classList.add("bg_lose"): odd.classList.add("bg_win")
+            } else if (+odd.innerHTML > 4){
+              (team===select_team)? odd.classList.add("bg_lose2"): odd.classList.add("bg_win2")
+            } else {
+              odd.classList.add("bg_yellow")
+            }
+            }
+        })       
+     }
+
+     const backlight_half = (el) => {
+      let button_1half = el.querySelector(".summary_table--row>.summary_th--1stHalf");
+      let button_2half = el.querySelector(".summary_table--row>.summary_th--2ndHalf");
+      
+     const color_wdl = (el, team, select_team) =>{
+      let {0:ht_score, 1:at_score} = el.innerHTML.split(" : ");
+      
+      if (team===select_team){
+        if (+ht_score < +at_score) el.classList.add("color_win");
+        if (+ht_score > +at_score) el.classList.add("color_lose");
+        if (+ht_score === +at_score) el.classList.add("color_draw");
+      } else {
+        if (+ht_score < +at_score) el.classList.add("color_lose");
+        if (+ht_score > +at_score) el.classList.add("color_win");
+        if (+ht_score === +at_score) el.classList.add("color_draw");        
+      } 
+     }
+
+      button_1half.addEventListener("click", () => {
+        
+        let parent = button_1half.parentElement.parentNode,
+            elems_1stHalf = parent.querySelectorAll(".summary_table--row>.summary_td--1stHalf"),
+            elems_2ndHalf = parent.querySelectorAll(".summary_table--row>.summary_td--2ndHalf"),
+            select_team = parent.getAttribute("team");
+        
+        elems_2ndHalf.forEach(el=>el.classList.remove("color_win", "color_lose", "color_draw"))
+        elems_1stHalf.forEach(el=>{
+          let team = el.parentElement.querySelector(".summary_td--awayTeam").innerHTML
+          color_wdl(el,team,select_team)
+        })
+      })
+
+      button_2half.addEventListener("click", () => {
+        let parent = button_2half.parentElement.parentNode,
+            elems_1stHalf = parent.querySelectorAll(".summary_table--row>.summary_td--1stHalf"),
+            elems_2ndHalf = parent.querySelectorAll(".summary_table--row>.summary_td--2ndHalf"),
+            select_team = parent.getAttribute("team");
+
+        elems_1stHalf.forEach(el=>el.classList.remove("color_win", "color_lose", "color_draw"))
+        elems_2ndHalf.forEach(el=>{
+          let team = el.parentElement.querySelector(".summary_td--awayTeam").innerHTML
+          color_wdl(el,team,select_team)
+        })
+      })      
+     }
+     
+
+     const show = (el) =>{
+      let showOverall = el.querySelector(".summary_table--row>.summary_th--match>.showOverall");
+      let showHome = el.querySelector(".summary_table--row>.summary_th--match>.showHome");
+      let showAway = el.querySelector(".summary_table--row>.summary_th--match>.showAway");
+      let select_team = el.getAttribute("team");
+      let elems_home = el.querySelectorAll(".summary_table--row>.summary_td--homeTeam")
+      let elems_away = el.querySelectorAll(".summary_table--row>.summary_td--awayTeam")
+
+      showOverall.addEventListener("click", () => {
+        showOverall.classList.add("press");
+        showAway.classList.remove("press");
+        showHome.classList.remove("press");
+        [...elems_home,...elems_away].forEach(el=>{
+          el.parentElement.style.display = 'grid'
+        })
+      })
+
+      showHome.addEventListener("click", () => {
+        showHome.classList.add("press");
+        showAway.classList.remove("press");
+        showOverall.classList.remove("press");
+        elems_home.forEach(el=>{
+          el.parentElement.style.display = 'grid'
+          if (el.innerHTML!==select_team) el.parentElement.style.display = 'none'
+        })
+      })
+
+      showAway.addEventListener("click", () => {
+        showHome.classList.remove("press");
+        showAway.classList.add("press");
+        showOverall.classList.remove("press");
+        elems_away.forEach(el=>{
+          el.parentElement.style.display = 'grid'
+          if (el.innerHTML!==select_team) el.parentElement.style.display = 'none'
+        })
+      })      
+
+     }
+
+     backlight_winner(statsHome_elem)
+     backlight_winner(statsAway_elem)
+     backlight_winner(statsH2H_elem)
+
+     backlight_half(statsHome_elem)
+     backlight_half(statsAway_elem)
+     backlight_half(statsH2H_elem)
+
+     show(statsHome_elem)
+     show(statsAway_elem)
+     
+
+  </script>
+
+<script>
+  
+  
+</script>    

@@ -1,0 +1,35 @@
+<div class="breadcrumbs" data-aos="fade-right" data-aos-delay="800">
+  <a href="/" class="bc-home" title="Home"><i class="material-icons">home</i></a>
+
+<% if (pageData.level==="match"){ %>
+  <span class="bc-country">
+    <%= pageData.data.category.toUpperCase() %>
+    <img src="/img/flag/<%= pageData.data.flag %>" width="14"/>
+  </span>
+  <a href="<%= pageData.data.link %>" class="bc-link"><%= pageData.data.title %></a>
+  <span class="bc-active show-on-small hide-on-med-and-up">
+    <%= data.matchInfo.homeTeamShortName %> - <%= data.matchInfo.awayTeamShortName %>
+  </span>  
+  <span class="bc-active hide-on-small-only">
+    <%= data.matchInfo.homeTeam %> - <%= data.matchInfo.awayTeam %>
+  </span>  
+<% } else if (pageData.level==="league"){ %>
+  <span class="bc-country">
+    <%= pageData.data.category.toUpperCase() %>
+    <img src="/img/flag/<%= pageData.data.flag %>" width="14"/>
+  </span>
+  <span class="bc-active"><%= pageData.data.title %></span>
+<% } else if (pageData.level==="referee"){ %>
+  <span class="bc-active">Referees statistics</span>  
+<% } else if (pageData.level==="refName"){ %>
+  <a href="/referees" class="bc-link">Referees statistics</a>
+  <span class="bc-active"><%= refInfo.name %></span> 
+<% } else if (pageData.level==="index"){ %>
+  <span class="bc-active">Schedule</span>   
+  <% } else if (pageData.level==="summary"){ %>
+    <span class="bc-active">Summary</span>        
+<% } %>       
+
+</div>
+
+

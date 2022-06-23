@@ -1,0 +1,209 @@
+<div id="home-tab" class="template_5-2-2" data-aos="fade-up">
+  <div class="stats_table--header statsHome">
+    <div class="stats_table--event">Event</div>
+    <div class="stats_table--match">Match</div>
+    <div class="stats_table--1stHalf">1stHalf</div>
+    <div class="stats_table--2stHalf">2stHalf</div>
+  
+    <!-- Match -->
+    <div class="stats_table--main" title='Total'>Total</div>
+    <div class="stats_table--basic" title='Total 1st Half'>1st Half</div>
+    <div class="stats_table--basic" title='Total 2nd Half'>2nd Half</div>
+  
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+      <%= data.matchInfo.homeTeam %></div>
+    <div class="stats_table--opp" title='Opponent team'>Opponent</div>
+    
+    <!-- 1stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+      <%= data.matchInfo.homeTeam %></div>
+    <div class="stats_table--opp" title='Opponent team'>Opponent</div>    
+    
+    <!-- 2stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+      <%= data.matchInfo.homeTeam %></div>
+    <div class="stats_table--opp" title='Opponent team'>Opponent</div>                     
+    
+  
+    <% for(let m=0; m < data.matchStats[0].matches.length; m++) { %>
+      <% let info = data.matchStats[0].matches[m].matchInfo %>
+      <% let statistic = data.matchStats[0].matches[m][stats] %>
+  
+      <% if (!statistic.match.homeTeam) { %>
+        <% continue %> 
+      <% } %>
+  
+      <div class="stats_td--event tooltipped" 
+           data-position="top" 
+           data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                         <span><%= info.league %></span></div>
+                         <i>(<%= info.fullDate %>)</i><br/>
+                         <%= info.tooltip %>">
+        <div>
+          <span class="stats_td--date"><%=info.fullDate %></span>
+          <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+          <span class="stats_td--status"><%=info.status %></span>
+        </div>
+      </div>
+  
+      <div class="stats_td--main"><%=parseInt(statistic.match.homeTeam) 
+        + parseInt(statistic.match.awayTeam) %></div>
+      <div class="stats_td--basic"><%=parseInt(statistic.firstHalf.homeTeam) 
+        + parseInt(statistic.firstHalf.awayTeam) %></div>
+      <div class="stats_td--basic"><%=parseInt(statistic.secondHalf.homeTeam) 
+        + parseInt(statistic.secondHalf.awayTeam) %></div> 
+  
+      <div class="stats_td--main HT_total_match--select" stats="compare"><%= parseInt(statistic.match.selectTeam) %></div> 
+      <div class="stats_td--opp HT_total_match--opponent" stats="compare"><%= parseInt(statistic.match.opponent) %></div>
+    
+      <div class="stats_td--main HT_total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf.selectTeam) %></div> 
+      <div class="stats_td--opp HT_total_1stHalf--opponent" stats="compare"><%= parseInt(statistic.firstHalf.opponent) %></div>                              
+      
+      <div class="stats_td--main HT_total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf.selectTeam) %></div> 
+      <div class="stats_td--opp HT_total_2ndHalf--opponent" stats="compare"><%= parseInt(statistic.secondHalf.opponent) %></div>        
+    <% } %>    
+  
+  </div>
+  </div>
+
+  <div id="away-tab" class="template_5-2-2">
+  <div class="stats_table--header statsAway">
+    <div class="stats_table--event">Event</div>
+    <div class="stats_table--match">Match</div>
+    <div class="stats_table--1stHalf">1stHalf</div>
+    <div class="stats_table--2stHalf">2stHalf</div>
+  
+    <!-- Match -->
+    <div class="stats_table--main" title='Total'>Total</div>
+    <div class="stats_table--basic" title='Total 1st Half'>1st Half</div>
+    <div class="stats_table--basic" title='Total 2nd Half'>2nd Half</div>
+
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+      <%= data.matchInfo.awayTeam %></div>
+    <div class="stats_table--opp" title='Opponent team'>Opponent</div>
+    
+    <!-- 1stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+       <%= data.matchInfo.awayTeam %></div>
+    <div class="stats_table--opp" title='Opponent team'>Opponent</div>    
+    
+    <!-- 2stHalf -->
+    <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+      <%= data.matchInfo.awayTeam %></div>
+    <div class="stats_table--opp" title='Opponent team'>Opponent</div>                     
+    
+  
+    <% for(let m=0; m < data.matchStats[1].matches.length; m++) { %>
+      <% let info = data.matchStats[1].matches[m].matchInfo %>
+      <% let statistic = data.matchStats[1].matches[m][stats] %>
+  
+      <% if (!statistic.match.homeTeam) { %>
+        <% continue %> 
+      <% } %>
+  
+      <div class="stats_td--event tooltipped" 
+           data-position="top" 
+           data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                         <span><%= info.league %></span></div>
+                         <i>(<%= info.fullDate %>)</i><br/>
+                         <%= info.tooltip %>">
+        <div>
+          <span class="stats_td--date"><%=info.fullDate %></span>
+          <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+          <span class="stats_td--status"><%=info.status %></span>
+        </div>
+      </div>
+  
+      <div class="stats_td--main AT_total_match" stats="compare"><%=parseInt(statistic.match.homeTeam) 
+        + parseInt(statistic.match.awayTeam) %></div>
+      <div class="stats_td--basic AT_total_1stHalf" stats="compare"><%=parseInt(statistic.firstHalf.homeTeam) 
+        + parseInt(statistic.firstHalf.awayTeam) %></div>
+      <div class="stats_td--basic AT_total_2ndHalf" stats="compare"><%=parseInt(statistic.secondHalf.homeTeam) 
+        + parseInt(statistic.secondHalf.awayTeam) %></div> 
+  
+      <div class="stats_td--main AT_total_match--select" stats="compare"><%= parseInt(statistic.match.selectTeam) %></div> 
+      <div class="stats_td--opp AT_total_match--opponent" stats="compare"><%= parseInt(statistic.match.opponent) %></div>
+    
+      <div class="stats_td--main AT_total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf.selectTeam) %></div> 
+      <div class="stats_td--opp AT_total_1stHalf--opponent" stats="compare"><%= parseInt(statistic.firstHalf.opponent) %></div>                              
+      
+      <div class="stats_td--main AT_total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf.selectTeam) %></div> 
+      <div class="stats_td--opp AT_total_2ndHalf--opponent" stats="compare"><%= parseInt(statistic.secondHalf.opponent) %></div>        
+    <% } %>    
+  
+  </div>
+  </div>
+  
+  <div id="h2h-tab" class="template_5-2-2">
+    <div class="stats_table--header statsAway">
+      <div class="stats_table--event">Event</div>
+      <div class="stats_table--match">Match</div>
+      <div class="stats_table--1stHalf">1stHalf</div>
+      <div class="stats_table--2stHalf">2stHalf</div>
+    
+      <!-- Match -->
+      <div class="stats_table--main" title='Total'>Total</div>
+      <div class="stats_table--basic" title='Total 1st Half'>1st Half</div>
+      <div class="stats_table--basic" title='Total 2nd Half'>2nd Half</div>
+
+      <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <%= data.matchInfo.homeTeam %></div>
+      <div class="stats_table--main" title='Opponent team'>
+        <%= data.matchInfo.awayTeam %></div>
+      
+      <!-- 1stHalf -->
+      <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <%= data.matchInfo.homeTeam %></div>
+      <div class="stats_table--main" title='Opponent team'>
+        <%= data.matchInfo.awayTeam %></div>    
+      
+      <!-- 2stHalf -->
+      <div class="stats_table--main" title='<%= data.matchInfo.homeTeam %>'>
+        <%= data.matchInfo.homeTeam %></div>
+      <div class="stats_table--main" title='Opponent team'>
+        <%= data.matchInfo.awayTeam %></div>                     
+      
+    
+      <% for(let m=0; m < data.matchStats[2].matches.length; m++) { %>
+        <% let info = data.matchStats[2].matches[m].matchInfo %>
+        <% let statistic = data.matchStats[2].matches[m][stats] %>
+        <% let homeTeam = data.matchInfo.homeTeam %>
+        <% let awayTeam = data.matchInfo.awayTeam %>
+  
+        <% if (!statistic.match.homeTeam || statistic.match.homeTeam==="no data") { %>
+          <% continue %> 
+        <% } %>
+    
+        <div class="stats_td--event tooltipped" 
+             data-position="top" 
+             data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                      <span><%= info.league %></span></div>
+                      <i>(<%= info.fullDate %>)</i><br/>
+                      <%= info.tooltip %>">
+          <div>
+            <span class="stats_td--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="stats_td--status"><%=info.status %></span>
+          </div>
+        </div>
+    
+        <div class="stats_td--main H2H_total_match" stats="compare"><%=parseInt(statistic.match.homeTeam) 
+          + parseInt(statistic.match.awayTeam) %></div>
+        <div class="stats_td--basic H2H_total_1stHalf" stats="compare"><%=parseInt(statistic.firstHalf.homeTeam) 
+          + parseInt(statistic.firstHalf.awayTeam) %></div>
+        <div class="stats_td--basic H2H_total_2ndHalf" stats="compare"><%=parseInt(statistic.secondHalf.homeTeam) 
+          + parseInt(statistic.secondHalf.awayTeam) %></div> 
+    
+        <div class="stats_td--main H2H_total_match--select" stats="compare"><%= parseInt(statistic.match[homeTeam]) %></div> 
+        <div class="stats_td--opp H2H_total_match--opponent" stats="compare"><%= parseInt(statistic.match[awayTeam]) %></div>
+      
+        <div class="stats_td--main H2H_total_1stHalf--select" stats="compare"><%= parseInt(statistic.firstHalf[homeTeam]) %></div> 
+        <div class="stats_td--opp H2H_total_1stHalf--opponent" stats="compare"><%= parseInt(statistic.firstHalf[awayTeam]) %></div>                              
+        
+        <div class="stats_td--main H2H_total_2ndHalf--select" stats="compare"><%= parseInt(statistic.secondHalf[homeTeam]) %></div> 
+        <div class="stats_td--opp H2H_total_2ndHalf--opponent" stats="compare"><%= parseInt(statistic.secondHalf[awayTeam]) %></div>        
+      <% } %>    
+    
+    </div>
+    </div>
+  

@@ -1,0 +1,25 @@
+<%- include('match-header'); -%>
+
+<div class="league-stats" data-aos="fade-up">
+  <div class="title" id="stats-selected"></div>
+  <ul class="tabs">
+    <li class="tab col s4">
+      <a href="/#home-tab">
+        <span class="show-on-small hide-on-med-and-up"><%= data.matchInfo.homeTeamShortName %></span>
+        <span class="hide-on-small-only"><%= data.matchInfo.homeTeam %></span>        
+      </a>
+    </li>
+    <li class="tab col s4">
+      <a href="/#away-tab">
+        <span class="show-on-small hide-on-med-and-up"><%= data.matchInfo.awayTeamShortName %></span>
+        <span class="hide-on-small-only"><%= data.matchInfo.awayTeam %></span>        
+      </a>
+    </li>
+    <li class="tab col s4"><a href="/#h2h-tab">
+      <span class="show-on-small hide-on-med-and-up">H2H</span>
+      <span class="hide-on-small-only">Head-to-Head</span>
+    </a></li>
+  </ul>
+</div>
+
+<%- include('stats_tables/matches'); -%>

@@ -1,0 +1,205 @@
+<div class="league-nav" data-aos="fade-up" id="summary-tab">
+  <ul class="tabs">
+    <li class="tab col s2" data-tab="total"><a href="#summary-total-tab">Total</a></li>
+    <li class="tab col s2" data-tab="fouls"><a href="#summary-fouls-tab">Fouls</a></li>
+    <li class="tab col s2" data-tab="other"><a href="#summary-other-tab">Other</a></li>           
+  </ul>
+</div>
+
+<div class="summary_table" data-aos="fade-up">
+ <div class="summary_league">
+   <ul class="summary_row-th">
+      <li class="summary_league_title">Leagues</li>
+   </ul>
+   <div id="leagues_data_input"> </div>
+ </div>
+ <div id="summary-total-tab">
+   <div class="summary_stats_data">
+     <ul id="stats_data_sort" class="summary_row-th" data-display="total">
+       <li data-column="goals" data-order="asc">
+         <img src="/img/icon/goals.png" alt="Goals"><span>Goals</span>
+       </li>
+       <li data-column="bothToScore" data-order="asc">
+         <img src="/img/icon/bothToScore.png" alt="Both To Score"><span>Both To Score</span>
+       </li>
+       <li data-column="totalUnder" data-order="asc">
+         <img src="/img/icon/totalUnder.png" alt="Total Under"><span>Total Under</span>
+       </li>
+       <li data-column="totalOver" data-order="asc">
+         <img src="/img/icon/totalOver.png" alt="Total Over"><span>Total Over</span>
+       </li>
+     </ul>
+
+     <div id="stats_total_input"> </div>
+
+   </div>  
+ </div>
+
+ <div id="summary-fouls-tab">
+   <div class="summary_stats_data">
+     <ul id="stats_data_sort" class="summary_row-th" data-display="fouls">
+       <li data-column="penalties" data-order="asc">
+         <img src="/img/icon/penalties.png" alt="Penalties"><span>Penalties</span>
+       </li>
+       <li data-column="fouls" data-order="asc">
+         <img src="/img/icon/fouls.png" alt="Fouls"><span>Fouls</span>
+       </li>
+       <li data-column="yellowCards" data-order="asc">
+         <img src="/img/icon/yellow.png" alt="Yellow Cards"><span>Yellow Cards</span>
+       </li>
+       <li data-column="redCards" data-order="asc">
+         <img src="/img/icon/red.png" alt="Red Cards"><span>Red Cards</span>
+       </li>
+     </ul>
+
+     <div id="stats_fouls_input"> </div>
+
+   </div>      
+ </div>
+
+ <div id="summary-other-tab">
+   <div class="summary_stats_data">
+     <ul id="stats_data_sort" class="summary_row-th" data-display="other">
+       <li data-column="cornerKicks" data-order="asc">
+         <img src="/img/icon/corner.png" alt="Corner Kicks"><span>Corner Kicks</span>
+       </li>
+       <li data-column="shotsOnGoal" data-order="asc">
+         <img src="/img/icon/shotsOnGoal.png" alt="Shots On Goal"><span>Shots On Goal</span>
+       </li>
+       <li data-column="goalAttempts" data-order="asc">
+         <img src="/img/icon/shots.png" alt="Goal Attempts"><span>Goal Attempts</span>
+       </li>
+       <li data-column="offsides" data-order="asc">
+         <img src="/img/icon/offsides.png" alt="Offsides"><span>Offsides</span>
+       </li>
+     </ul>
+
+     <div id="stats_other_input"> </div>
+
+   </div>  
+ </div>
+</div>   
+
+
+<script>
+let totalArray = JSON.parse('<%- JSON.stringify(summaryData.totalSummary) %>')
+let foulsArray = JSON.parse('<%- JSON.stringify(summaryData.foulsSummary) %>')
+let otherArray = JSON.parse('<%- JSON.stringify(summaryData.otherSummary) %>')
+
+function buildLeagues(data){
+ console.log("buildLeagues")
+   let leagues = document.getElementById('leagues_data_input')
+   leagues.innerHTML = ''
+   for (let i = 0; i < data.length; i++){
+     let row = `<ul class="summary_row-td">
+                   <li class="icon--flag event__title fl_${data[i].num}">
+                     ${data[i].league}
+                   </li>
+               </ul>`
+     leagues.innerHTML += row
+   }
+}
+
+function buildFoulsStats(data){
+   let stats = document.getElementById('stats_fouls_input')
+   stats.innerHTML = ''
+   for (let i = 0; i < data.length; i++){
+     let row = `<ul class="summary_row-td">
+                 <li class="penalties-data">${data[i].penalties}</li>
+                 <li class="fouls-data">${data[i].fouls}</li>
+                 <li class="yellowCards-data">${data[i].yellowCards}</li> 
+                 <li class="redCards-data">${data[i].redCards}</li>   
+               </ul>`
+     stats.innerHTML += row
+   }
+}
+
+function buildTotalStats(data){
+ 
+   let stats = document.getElementById('stats_total_input')
+   stats.innerHTML = ''
+   for (let i = 0; i < data.length; i++){
+     let row = `<ul class="summary_row-td">
+                 <li class="goals-data">${data[i].goals}</li>
+                 <li class="bothToScore-data">${data[i].bothToScore}</li>
+                 <li class="totalUnder-data">${data[i].totalUnder}</li> 
+                 <li class="totalOver-data">${data[i].totalOver}</li>   
+               </ul>`
+     stats.innerHTML += row
+   }
+}
+
+function buildOtherStats(data){
+   let stats = document.getElementById('stats_other_input')
+   stats.innerHTML = ''
+   for (let i = 0; i < data.length; i++){
+     let row = `<ul class="summary_row-td">
+                 <li class="cornerKicks-data">${data[i].cornerKicks}</li>
+                 <li class="shotsOnGoal-data">${data[i].shotsOnGoal}</li>
+                 <li class="goalAttempts-data">${data[i].goalAttempts}</li> 
+                 <li class="offsides-data">${data[i].offsides}</li>   
+               </ul>`
+     stats.innerHTML += row
+   }
+}
+
+function colorStats(column,order){
+   let select = $(`.${column}-data`)
+   select.addClass(`stats_data_select`)
+}  
+
+ $('#stats_data_sort li').on('click', function(){
+   let column = $(this).data('column')
+   let order = $(this).data('order')
+   let display = $(this).closest('ul').data('display')
+
+
+   $(this).closest('ul').children().removeClass()
+
+   function sortArr (array) {
+     if(order == 'desc'){
+       $(this).data('order', "asc")
+       return array = array.sort((a,b) => a[column] > b[column] ? 1 : -1)
+     }else{
+       $(this).data('order', "desc")
+       return array = array.sort((a,b) => a[column] < b[column] ? 1 : -1)
+     }
+   }
+
+   switch (display) {
+     case "total":
+       let arrTotal = sortArr.call($(this),totalArray)
+       buildLeagues(arrTotal)
+       buildTotalStats(arrTotal)
+       break;
+     case "fouls":
+       let arrFouls = sortArr.call($(this),foulsArray)
+       buildLeagues(arrFouls)
+       buildFoulsStats(arrFouls)
+       break;
+     case "other":
+       let arrOthers = sortArr.call($(this),otherArray)
+       buildLeagues(arrOthers)
+       buildOtherStats(arrOthers)
+       break;
+   }
+
+   $(this).addClass(`stats_sort_${order}`)
+   
+   colorStats(column)
+ })
+
+ // buildLeagues(totalArray)
+ // buildTotalStats(totalArray)
+ // buildFoulsStats(foulsArray)
+ // buildOtherStats(otherArray)
+
+ $('#summary-tab .tabs li').on('click', function(){
+   let select = $(this).data('tab')
+   console.log("select",select)
+   $(`#summary-${select}-tab li`)[0].click()
+ })
+
+ $(`#summary-total-tab li`)[0].click()
+
+</script>

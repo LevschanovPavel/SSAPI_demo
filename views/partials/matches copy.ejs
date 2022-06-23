@@ -1,0 +1,443 @@
+
+
+<!-- <% if (todayMatches.length===0) { %>
+  <h4>Upcoming Matches</h4>
+<% } else { %>
+  <ul class="tabs">
+    <li class="tab col s6"><a href="#matches-tab">Today Matches</a></li>
+    <li class="tab col s6"><a href="#fixtures-tab">Fixtures</a></li>
+  </ul>
+<% } %> -->
+
+
+<div id="matches-tab" class="col s12">
+  <!-- MATCHES -->
+  <div class="today_matches_container">
+      <% for(let t=0; t < todayMatches.length; t++) { %>
+        <div class="event_header">
+          <div class="icon--flag event__title fl_<%= todayMatches[t].num %>">
+            <div class="event__titleBox">
+              <span class="event__title--type"><%= todayMatches[t].country %> </span>
+              <span class="event__title--name"><%= todayMatches[t].league %> </span>
+            </div>
+          </div>
+        </div>
+        <ul class="collapsible">
+              <% for(let tm=0; tm < todayMatches[t].matches.length; tm++) { %>
+                <%  if (tm===0) {%>
+                  <li class="active">
+                <%} else {  %>
+                  <li>
+                <%}%>
+                  <div class="collapsible-header">
+
+                    <div class="event" data-aos="zoom-in">
+                      <div class="time">
+                        <%= todayMatches[t].matches[tm].matchData %> 
+                        <%= todayMatches[t].matches[tm].matchTime %>
+                      </div>
+                      <div class="home_team">
+                        <img class="logo" src="https://www.soccer24.com/res/image/data/<%= todayMatches[t].matches[tm].homeTeamIco %>">
+                        <span><%= todayMatches[t].matches[tm].homeTeam %></span>
+                      </div>
+                      <div class="split"> - </div>
+                      <div class="away_team">
+                        <span><%= todayMatches[t].matches[tm].awayTeam %></span>
+                        <img class="logo" src="https://www.soccer24.com/res/image/data/<%= todayMatches[t].matches[tm].awayTeamIco %>">
+                      </div>
+                      <div class="iconStats" >
+                        <i class="material-icons" linkId='<%= todayMatches[t].matches[tm].matchId %>' title="Statistics">assessment</i>
+                      </div>    
+                    </div>
+                  </div>
+                  <div class="collapsible-body">
+                    <div class="infoWrapper" data-aos="zoom-in-right" data-aos-delay="300">
+                      <div class="odds">
+                        <div class="oddsTitle">Odds:</div>
+                        <div class="cellWrapper">
+                          <span class="cell">
+                            <span class="oddsType">1</span>
+                            <span class="oddsValue"><%= todayMatches[t].matches[tm].odds.w %></span>
+                          </span>
+                        </div>
+                        <div class="cellWrapper">
+                          <span class="cell">
+                            <span class="oddsType">X</span>
+                            <span class="oddsValue"><%= todayMatches[t].matches[tm].odds.d %></span>
+                          </span>
+                        </div>
+                        <div class="cellWrapper">
+                          <span class="cell">
+                            <span class="oddsType">2</span>
+                            <span class="oddsValue"><%= todayMatches[t].matches[tm].odds.l %></span>
+                          </span>
+                        </div>                        
+                      </div>
+                    </div>
+                    <div class="infoWrapper">
+                      <div class="matchInfo" data-aos="zoom-in-left" data-aos-delay="300">
+                        <span>Referee:</span> <%= todayMatches[t].matches[tm].referee %> </br>
+                        <span>Venue:</span> <%= todayMatches[t].matches[tm].venue %>
+                      </div>
+                    </div>                    
+
+                    <div class="container" >
+                      <div class="section" id='<%= todayMatches[t].matches[tm].matchId %>'>
+                        <div class="header center teal-text text-lighten-2 hide-on-small-only"  data-aos="fade-up">Show Match Statistics</div>
+                                                 
+                        <!--   Icon Section   -->
+                        <div class="row show-on-small hide-on-med-and-up">
+                          
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>                            
+                          </div>
+                        </div>    
+                        
+                        <div class="all-stats center teal-text text-lighten-2 show-on-small hide-on-med-and-up"  data-aos="fade-up" data-aos-delay="600">Show all statistics</div>                   
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="shotsOnGoal" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/shots.png" alt="Shots">
+                              <span>Shots</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>
+                        </div>  
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s4 m2 offset-m1 offset-s2">
+
+                            <div class="icon-stats" stats="ballPossession" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/possession.png" alt="Ball possession">
+                              <span>Ball possession</span>
+                            </div>
+
+                          </div>
+
+                          <div class="col s4 m2 ">
+                            <div class="icon-stats" stats="yellowCards" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/yellow.png" alt="Yellow cards">
+                              <span>Yellow cards</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="offsides" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/offsides.png" alt="Offsides">
+                              <span>Offsides</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="penalties" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/penalties.png" alt="Penalties">
+                              <span>Penalties</span>
+                            </div>
+                          </div>        
+                    
+
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>
+                          </div>
+                        </div>
+                             
+                      </div>
+                    </div> 
+
+
+                  </div>
+                  </li>
+              <% } %>  
+        </ul>
+      <% } %> 
+  </div>
+</div>
+
+<div id="fixtures-tab" class="col s12">
+  <!-- FIXTURES -->
+  <div class="today_matches_container">
+
+    <% for(let t=0; t < fixtures.length; t++) { %>
+      <div class="event_header">
+        <div class="icon--flag event__title fl_<%= fixtures[t].num %>">
+          <div class="event__titleBox">
+            <span class="event__title--type"><%= fixtures[t].country %> </span>
+            <span class="event__title--name"><%= fixtures[t].league %> </span>
+          </div>
+        </div>
+      </div>
+      <ul class="collapsible">
+            <% for(let tm=0; tm < fixtures[t].matches.length; tm++) { %>
+              <%  if (tm===0) {%>
+                <li class="active">
+              <%} else {  %>
+                <li>
+              <%}%>
+                <div class="collapsible-header">
+
+                  <div class="event">
+                    <div class="time">
+                      <%= fixtures[t].matches[tm].matchData %> 
+                      <%= fixtures[t].matches[tm].matchTime %>
+                    </div>
+                    <div class="home_team">
+                      <img class="logo" src="https://www.soccer24.com/res/image/data/<%= fixtures[t].matches[tm].homeTeamIco %>">
+                      <span><%= fixtures[t].matches[tm].homeTeam %></span>
+                    </div>
+                    <div class="split"> - </div>
+                    <div class="away_team">
+                      <span><%= fixtures[t].matches[tm].awayTeam %></span>
+                      <img class="logo" src="https://www.soccer24.com/res/image/data/<%= fixtures[t].matches[tm].awayTeamIco %>">
+                    </div>
+                    <div class="iconStats" >
+                      <i class="material-icons" linkId='<%= fixtures[t].matches[tm].matchId %>' title="Statistics">assessment</i>
+                    </div>                      
+                  </div>
+                </div>
+                <div class="collapsible-body">
+                  <div class="infoWrapper">
+                    <div class="odds">
+                      <div class="oddsTitle">Odds:</div>
+                      <div class="cellWrapper">
+                        <span class="cell">
+                          <span class="oddsType">1</span>
+                          <span class="oddsValue"><%= fixtures[t].matches[tm].odds.w %></span>
+                        </span>
+                      </div>
+                      <div class="cellWrapper">
+                        <span class="cell">
+                          <span class="oddsType">X</span>
+                          <span class="oddsValue"><%= fixtures[t].matches[tm].odds.d %></span>
+                        </span>
+                      </div>
+                      <div class="cellWrapper">
+                        <span class="cell">
+                          <span class="oddsType">2</span>
+                          <span class="oddsValue"><%= fixtures[t].matches[tm].odds.l %></span>
+                        </span>
+                      </div>                        
+                    </div>
+                  </div>
+                  <div class="infoWrapper">
+                    <div class="matchInfo">
+                      <span>Referee:</span> <%= fixtures[t].matches[tm].referee %> </br>
+                      <span>Venue:</span> <%= fixtures[t].matches[tm].venue %>
+                    </div>
+                  </div>   
+
+                  <div class="container" >
+                    <div class="section" id='<%= fixtures[t].matches[tm].matchId %>'>
+                      <div class="header center teal-text text-lighten-2 hide-on-small-only"  data-aos="fade-up">Show Match Statistics</div>   
+
+                        <!--   Icon Section   -->
+                        <div class="row show-on-small hide-on-med-and-up">
+                          
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>                            
+                          </div>
+                        </div>    
+                        
+                        <div class="all-stats center teal-text text-lighten-2 show-on-small hide-on-med-and-up"  data-aos="fade-up" data-aos-delay="600">Show all statistics</div>                   
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s3 m2 offset-m2">
+                            <div class="icon-stats" stats="matches" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/matches.png" alt="Last matches">
+                              <span>Matches</span>
+                            </div>
+                          </div>
+                   
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="goals" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/goals.png" alt="Total">
+                              <span>Total</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="shotsOnGoal" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/shots.png" alt="Shots">
+                              <span>Shots</span>
+                            </div>
+                          </div>        
+                    
+                          
+                          <div class="col s3 m2">
+                            <div class="icon-stats" stats="cornerKicks" data-aos="fade-right" data-aos-delay="600">
+                              <img src="/img/icon/corner.png" alt="Corners kicks">
+                              <span>Corners kicks</span>
+                            </div>
+                          </div>
+                        </div>  
+
+                        <div class="row hide-on-small-only">
+                          <div class="col s4 m2 offset-m1 offset-s2">
+
+                            <div class="icon-stats" stats="ballPossession" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/possession.png" alt="Ball possession">
+                              <span>Ball possession</span>
+                            </div>
+
+                          </div>
+
+                          <div class="col s4 m2 ">
+                            <div class="icon-stats" stats="yellowCards" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/yellow.png" alt="Yellow cards">
+                              <span>Yellow cards</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="offsides" data-aos="fade-down" data-aos-delay="600">
+                              <img src="/img/icon/offsides.png" alt="Offsides">
+                              <span>Offsides</span>
+                            </div>
+                          </div>
+                    
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="penalties" data-aos="fade-up" data-aos-delay="600">
+                              <img src="/img/icon/penalties.png" alt="Penalties">
+                              <span>Penalties</span>
+                            </div>
+                          </div>        
+                    
+
+                          <div class="col s4 m2">
+                            <div class="icon-stats" stats="fouls" data-aos="fade-left" data-aos-delay="600">
+                              <img src="/img/icon/fouls.png" alt="Fouls">
+                              <span>Fouls</span>
+                            </div>
+                          </div>
+                        </div>
+                           
+                    </div>
+                  </div>                          
+                  
+                </div>
+                </li>
+            <% } %>  
+      </ul>
+    <% } %> 
+</div>
+</div>   
+
+<% if (country!=="europe") { %>
+  <div id="standings-tab" class="col s12">
+    standings-tab
+  </div>
+<% } %>
+
+
+<div id="latest-tab" class="col s12">
+  latest-tab
+</div>
+
+
+<script>
+  // var events = document.getElementsByClassName('event');
+  let events = document.getElementsByClassName('icon-stats');
+  let allStats = document.getElementsByClassName('all-stats');
+  let iconStats = document.querySelectorAll('.iconStats>.material-icons');
+  let leagueId = '<%= leagueId %>';
+  let country = '<%= country %>';
+  for(var i = 0; i < iconStats.length; i++)
+    iconStats[i].onclick = function() {
+      let matchId = this.getAttribute('linkId')
+      location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+    }
+
+  for(var i = 0; i < allStats.length; i++)
+    allStats[i].onclick = function() {
+      let parent = this.closest('.section');
+      let matchId = parent.id
+      location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+    }
+
+  for(var i = 0; i < events.length; i++)
+    events[i].onclick = function() {
+      let parent = this.closest('.section');
+      let matchId = parent.id
+      let stat = this.getAttribute('stats')
+      if (stat==="matches") {
+        location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+      } else {
+        location.assign(`/${country}/${leagueId}/match?id=${matchId}&stats=${stat}`)
+      }
+    };
+  
+</script>

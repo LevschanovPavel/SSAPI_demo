@@ -1,0 +1,485 @@
+<div id="home-tab" data-aos="fade-up"> 
+  <div class="matches_table statsHome" team='<%= data.matchInfo.homeTeam %>'>
+    <ul class="matches_row">
+      <!-- Match -->
+      <li class="matches_th--match">
+        <span class="showOverall waves-effect waves-light press">Overall</span>
+        <b class="show-on-small hide-on-med-and-up"><%= data.matchInfo.homeTeamShortName %> :</b>
+        <b class="hide-on-small-only"><%= data.matchInfo.homeTeam %> :</b>  
+        <i class="showHomeHT waves-effect waves-light">Home</i>/
+        <i class="showAwayHT waves-effect waves-light">Away</i>
+      </li>
+      <!-- Score -->
+      <li class="matches_th--matchScore" title='Match Score'>Score</li>
+      <li class="matches_th--1stHalf" title='Score 1st Half'>1H</li>  
+      <li class="matches_th--2ndHalf" title='Score 2nd Half'>2H</li>   
+
+      <!-- Odds -->
+      <li class="matches_th--odds-w" title=''>1</li>
+      <li class="matches_th--odds-d" title=''>X</li> 
+      <li class="matches_th--odds-l" title=''>2</li> 
+    </ul>
+
+    <% for(let m=0; m < data.matchStats[0].matches.length; m++) { %>
+      <% let info = data.matchStats[0].matches[m].matchInfo %>
+      <% let stats = data.matchStats[0].matches[m].stats %>
+      <% let odds = data.matchStats[0].matches[m].odds %>
+      <% let result = stats.goals.match.homeTeam - stats.goals.match.awayTeam %>
+      <% let homeTeam = data.matchInfo.homeTeam %>
+      <% let awayTeam = data.matchInfo.awayTeam %>
+
+      <% let summary = data.matchStats[0].matches[m].summary %>
+      
+      <ul class="matches_row">
+      
+        <li class="matches_td--event tooltipped" 
+              data-position="top" 
+              data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                            <span><%= info.league %></span></div>
+                            <i>(<%= info.fullDate %>)</i><br/>
+                            <%= info.tooltip %>">
+          <div>
+            <span class="matches--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="matches--status"><%=info.status %></span>
+          </div>
+        </li>
+
+        <li class="matches_td--homeTeam" team='<%= info.homeTeam %>'>
+          <span class="show-on-small hide-on-med-and-up"><%= info.homeTeamShortName %></span>
+          <span class="hide-on-small-only"><%= info.homeTeam %></span>           
+        </li> 
+        <li class="matches_td--awayTeam" team='<%= info.awayTeam %>'>
+          <span class="show-on-small hide-on-med-and-up"><%= info.awayTeamShortName %></span>
+          <span class="hide-on-small-only"><%= info.awayTeam %></span>            
+        </li>
+
+        <li class="matches_td--wdl"><span class="wdl"></span></li> 
+        <li class="matches_td--score">
+          <%=summary.score90min.homeTeam %> : <%=summary.score90min.awayTeam %>
+        </li>                              
+        <li class="matches_td--1stHalf">
+          <%=stats.goals.firstHalf.homeTeam %> : <%=stats.goals.firstHalf.awayTeam %>
+        </li> 
+        <li class="matches_td--2ndHalf">
+          <%=stats.goals.secondHalf.homeTeam %> : <%=stats.goals.secondHalf.awayTeam %>
+        </li>        
+
+        <li class="matches_td--odds" result='<%= result %>'>
+          <span class="win"><%=odds.w %></span></li>       
+        <li class="matches_td--odds" result='<%= result %>'>
+          <span class="draw"><%=odds.d %></span></li>      
+        <li class="matches_td--odds" result='<%= result %>'>
+          <span class="lose"><%=odds.l %></span></li>  
+        </ul>
+    <% } %>   
+
+      </div>
+</div>
+
+<div id="away-tab">
+  <div class="matches_table statsAway" team='<%= data.matchInfo.awayTeam %>'>
+    <ul class="matches_row">
+      <!-- Match -->
+      <li class="matches_th--match">
+        <span class="showOverall waves-effect waves-light press">Overall</span>
+        <b class="show-on-small hide-on-med-and-up"><%= data.matchInfo.awayTeamShortName %> :</b>
+        <b class="hide-on-small-only"><%= data.matchInfo.awayTeam %> :</b>  
+        <i class="showHomeHT waves-effect waves-light">Home</i>/
+        <i class="showAwayHT waves-effect waves-light">Away</i>
+      </li>      
+      <!-- Score -->
+      <li class="matches_th--matchScore" title='Match Score'>Score</li>
+      <li class="matches_th--1stHalf" title='Score 1st Half'>1H</li>  
+      <li class="matches_th--2ndHalf" title='Score 2nd Half'>2H</li>   
+
+      <!-- Odds -->
+      <li class="matches_th--odds-w" title=''>1</li>
+      <li class="matches_th--odds-d" title=''>X</li> 
+      <li class="matches_th--odds-l" title=''>2</li> 
+    </ul>
+
+    <% for(let m=0; m < data.matchStats[1].matches.length; m++) { %>
+      <% let info = data.matchStats[1].matches[m].matchInfo %>
+      <% let stats = data.matchStats[1].matches[m].stats %>
+      <% let odds = data.matchStats[1].matches[m].odds %>
+      <% let result = stats.goals.match.homeTeam - stats.goals.match.awayTeam %>
+      <% let homeTeam = data.matchInfo.homeTeam %>
+      <% let awayTeam = data.matchInfo.awayTeam %>
+      <% let summary = data.matchStats[1].matches[m].summary %>
+
+      <ul class="matches_row">
+      
+        <li class="matches_td--event tooltipped" 
+              data-position="top" 
+              data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                            <span><%= info.league %></span></div>
+                            <i>(<%= info.fullDate %>)</i><br/>
+                            <%= info.tooltip %>">
+          <div>
+            <span class="matches--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="matches--status"><%=info.status %></span>
+          </div>
+        </li>
+
+        <li class="matches_td--homeTeam" team='<%= info.homeTeam %>'>
+          <span class="show-on-small hide-on-med-and-up"><%= info.homeTeamShortName %></span>
+          <span class="hide-on-small-only"><%= info.homeTeam %></span>           
+        </li> 
+        <li class="matches_td--awayTeam" team='<%= info.awayTeam %>'>
+          <span class="show-on-small hide-on-med-and-up"><%= info.awayTeamShortName %></span>
+          <span class="hide-on-small-only"><%= info.awayTeam %></span>            
+        </li>
+
+        <li class="matches_td--wdl"><span class="wdl"></span></li> 
+        <li class="matches_td--score">
+          <%=summary.score90min.homeTeam %> : <%=summary.score90min.awayTeam %>
+        </li>                              
+        <li class="matches_td--1stHalf">
+          <%=stats.goals.firstHalf.homeTeam %> : <%=stats.goals.firstHalf.awayTeam %>
+        </li> 
+        <li class="matches_td--2ndHalf">
+          <%=stats.goals.secondHalf.homeTeam %> : <%=stats.goals.secondHalf.awayTeam %>
+        </li>        
+
+        <li class="matches_td--odds" result='<%= result %>'>
+          <span class="win"><%=odds.w %></span></li>       
+        <li class="matches_td--odds" result='<%= result %>'>
+          <span class="draw"><%=odds.d %></span></li>      
+        <li class="matches_td--odds" result='<%= result %>'>
+          <span class="lose"><%=odds.l %></span></li>  
+      </ul>
+    <% } %>       
+
+  </div>
+</div>
+
+<div id="h2h-tab">
+  <div class="matches_table statsH2H" team='<%= data.matchInfo.homeTeam %>'>  
+    <ul class="matches_row">
+      <!-- Match -->
+
+      <li class="matches_th--match">
+        <b class="show-on-small hide-on-med-and-up"><%= data.matchInfo.homeTeamShortName %> :</b>
+        <b class="hide-on-small-only"><%= data.matchInfo.homeTeam %> :</b> 
+
+        <i class="showHomeHT waves-effect waves-light">Home</i>/
+        <i class="showAwayHT waves-effect waves-light">Away</i>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <b class="show-on-small hide-on-med-and-up"><%= data.matchInfo.awayTeamShortName %> :</b>
+        <b class="hide-on-small-only"><%= data.matchInfo.awayTeam %> :</b> 
+
+        <i class="showHomeAT waves-effect waves-light">Home</i>/
+        <i class="showAwayAT waves-effect waves-light">Away</i>        
+      </li>
+      <li class="matches_th--overall"><span class="showOverall waves-effect waves-light press">Overall</span></li>
+      <!-- Score -->
+      <li class="matches_th--matchScore" title='Match Score'>Score</li>
+      <li class="matches_th--1stHalf" title='Score 1st Half'>1H</li>  
+      <li class="matches_th--2ndHalf" title='Score 2nd Half'>2H</li>    
+
+      <!-- Odds -->
+      <li class="matches_th--odds-w" title=''>1</li>
+      <li class="matches_th--odds-d" title=''>X</li> 
+      <li class="matches_th--odds-l" title=''>2</li> 
+    </ul>
+
+    <% for(let m=0; m < data.matchStats[2].matches.length; m++) { %>
+      <% let info = data.matchStats[2].matches[m].matchInfo %>
+      <% let stats = data.matchStats[2].matches[m].stats %>
+      <% let odds = data.matchStats[2].matches[m].odds %>
+      <% let result = stats.goals.match.homeTeam - stats.goals.match.awayTeam %>
+      <% let homeTeam = data.matchInfo.homeTeam %>
+      <% let awayTeam = data.matchInfo.awayTeam %>
+      <% let summary = data.matchStats[2].matches[m].summary %>
+      <ul class="matches_row">
+      
+        <li class="matches_td--event tooltipped" 
+              data-position="top" 
+              data-tooltip="<div><img src='https://www.soccer24.com<%= flag_url[info.flag] %>'>
+                            <span><%= info.league %></span></div>
+                            <i>(<%= info.fullDate %>)</i><br/>
+                            <%= info.tooltip %>">
+          <div>
+            <span class="matches--date"><%=info.fullDate %></span>
+            <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+            <span class="matches--status"><%=info.status %></span>
+          </div>
+        </li>
+
+        <li class="matches_td--homeTeam" team='<%= info.homeTeam %>'>
+          <span class="show-on-small hide-on-med-and-up"><%= info.homeTeamShortName %></span>
+          <span class="hide-on-small-only"><%= info.homeTeam %></span>           
+        </li> 
+        <li class="matches_td--awayTeam" team='<%= info.awayTeam %>'>
+          <span class="show-on-small hide-on-med-and-up"><%= info.awayTeamShortName %></span>
+          <span class="hide-on-small-only"><%= info.awayTeam %></span>            
+        </li>
+
+        <li class="matches_td--wdl"><span class="wdl"></span></li> 
+        <li class="matches_td--score">
+          <%=summary.score90min.homeTeam %> : <%=summary.score90min.awayTeam %>
+        </li>                              
+        <li class="matches_td--1stHalf">
+          <% if (summary.scoreFirstHalf.homeTeam){ %>
+            <%=summary.scoreFirstHalf.homeTeam %> : <%=summary.scoreFirstHalf.awayTeam %>
+          <% } else { %>
+            ?
+          <% } %>     
+        </li> 
+        <li class="matches_td--2ndHalf">
+          <% if (summary.scoreSecondHalf.homeTeam){ %>
+            <%=summary.scoreSecondHalf.homeTeam %> : <%=summary.scoreSecondHalf.awayTeam %>
+          <% } else { %>
+            ?
+          <% } %>            
+        </li>        
+
+        <% if (odds.w){ %>
+          <li class="matches_td--odds" result='<%= result %>'>
+            <span class="win"><%=odds.w %></span></li>       
+          <li class="matches_td--odds" result='<%= result %>'>
+            <span class="draw"><%=odds.d %></span></li>      
+          <li class="matches_td--odds" result='<%= result %>'>
+            <span class="lose"><%=odds.l %></span></li> 
+        <% } else { %>
+          <li class="matches_td--odds" result='<%= result %>'>
+            <span class="win bg_nodata">?</span></li>       
+          <li class="matches_td--odds" result='<%= result %>'>
+            <span class="draw bg_nodata">?</span></li>      
+          <li class="matches_td--odds" result='<%= result %>'>
+            <span class="lose bg_nodata">?</span></li> 
+        <% } %>      
+
+
+        </ul>
+
+    <% } %>        
+  </div>
+</div>
+
+
+<script>
+ 
+  let statsHome_elem = document.querySelector(".statsHome"),
+      statsAway_elem = document.querySelector(".statsAway"),
+      statsH2H_elem = document.querySelector(".statsH2H");
+
+      const backlight_winner = (el,reverse="") => {
+       let el_wdl = el.querySelectorAll(".matches_td--wdl")
+       let select_team = el.getAttribute("team")
+
+       let el_win = el.querySelectorAll(".win")
+       let el_draw = el.querySelectorAll(".draw")
+       let el_lose = el.querySelectorAll(".lose")
+
+       const removeClass = (selector_name, class_names) =>{
+        let link_elems =  Array.from(el.querySelectorAll(`.${selector_name}>span`))
+        link_elems.forEach(elem => elem.classList.remove(...class_names))
+       }
+
+       removeClass("matches_td--wdl",["wld--w","wld--d","wld--l"])
+       removeClass("matches_td--odds",["bg_draw","bg_win","bg_lose","bg_draw2","bg_win2","bg_lose2"])
+
+       el_wdl.forEach((el,idx)=>{
+          let score = el.parentElement.querySelector(".matches_td--score").innerHTML.split(":"),
+              home_team = el.parentElement.querySelector(".matches_td--homeTeam"),
+              away_team = el.parentElement.querySelector(".matches_td--awayTeam"),            
+              team = away_team.getAttribute("team"),
+              { 0:ht_score, 1:at_score } = score,
+              child = el.firstElementChild;
+
+          if (reverse) team = home_team.getAttribute("team");
+
+          away_team.classList.remove("color_team");
+          home_team.classList.remove("color_team");
+          (team===select_team)?away_team.classList.add("color_team"):home_team.classList.add("color_team")
+
+          if (ht_score-at_score === 0) { 
+            let odd = el_draw[idx];
+            child.innerHTML="D"; 
+            child.classList.add("wld--d");
+            (+odd.innerHTML > 4)? odd.classList.add("bg_draw"): odd.classList.add("bg_yellow")
+          }
+
+          if (ht_score-at_score < 0) { 
+            let odd = el_lose[idx];
+
+            (team===select_team)? child.innerHTML="W": child.innerHTML="L"; 
+            (team===select_team)? child.classList.add("wld--w"): child.classList.add("wld--l"); 
+            
+            if (+odd.innerHTML > 5){
+              (team===select_team)? odd.classList.add("bg_win"): odd.classList.add("bg_lose")
+            } else if (+odd.innerHTML > 4){
+              (team===select_team)? odd.classList.add("bg_win2"): odd.classList.add("bg_lose2")
+            } else {
+              odd.classList.add("bg_yellow")
+            }
+
+          }
+          if (ht_score-at_score > 0) { 
+            let odd = el_win[idx];
+            (team===select_team)? child.innerHTML="L": child.innerHTML="W"; 
+            (team===select_team)? child.classList.add("wld--l"): child.classList.add("wld--w"); 
+            
+            if (+odd.innerHTML > 5){
+              (team===select_team)? odd.classList.add("bg_lose"): odd.classList.add("bg_win")
+            } else if (+odd.innerHTML > 4){
+              (team===select_team)? odd.classList.add("bg_lose2"): odd.classList.add("bg_win2")
+            } else {
+              odd.classList.add("bg_yellow")
+            }
+            }
+        })       
+     }
+  
+  backlight_winner(statsHome_elem)
+  backlight_winner(statsAway_elem)
+  backlight_winner(statsH2H_elem)
+
+  
+     const show_matches = (el)=>{
+       console.log("el",el)
+      let show_elems = el.querySelector(".matches_row"),
+          elems_home = el.querySelectorAll(".matches_td--homeTeam"),
+          elems_away = el.querySelectorAll(".matches_td--awayTeam"),
+          select_team = el.getAttribute("team");
+
+
+      const removeClass = (selector_name,class_name) =>{
+        let link_elems = Array.from(el.querySelector(`.${selector_name}`).children)
+        link_elems.forEach(elem => elem.classList.remove(`${class_name}`))
+      }
+
+      const show = (elems) => {
+        elems.forEach(el=>{
+          el.parentElement.style.display = 'contents'
+          if (el.getAttribute("team")!==select_team) el.parentElement.style.display = 'none'
+        })
+      }
+
+      const showOpp = (elems,reverse="") => {
+        reverse? backlight_winner(el,"reverse") : backlight_winner(el)
+        const isReverse = (el) => {
+          if (reverse) return el.getAttribute("team")===select_team
+          return el.getAttribute("team")!==select_team
+        }
+        elems.forEach(el=>{
+          el.parentElement.style.display = 'contents'
+          if (isReverse(el)) el.parentElement.style.display = 'none'
+        })
+      }      
+
+      show_elems.onclick = (e)=>{
+          if (e.target.tagName !== "SPAN" && e.target.tagName !== "I") return false
+
+          let elems_1stHalf = document.querySelectorAll(".matches_td--1stHalf"),
+              elems_2ndHalf = document.querySelectorAll(".matches_td--2ndHalf");
+
+          elems_1stHalf.forEach(el=>el.classList.remove("color_win", "color_lose", "color_draw"))
+          elems_2ndHalf.forEach(el=>el.classList.remove("color_win", "color_lose", "color_draw"))
+
+
+          removeClass("matches_th--match","press");
+          if (el.classList.contains("statsH2H")) removeClass("matches_th--overall","press");
+
+          e.target.classList.add("press");
+
+          if (e.target.classList[0] === "showOverall") {
+            
+            [...elems_home,...elems_away].forEach(el=>{
+              el.parentElement.style.display = 'contents'
+            })
+          }
+
+
+          if (e.target.classList[0] === "showHome") {
+            show(elems_home);
+            el.removeAttribute('show')
+          }
+          if (e.target.classList[0] === "showAway") {
+            show(elems_away);
+            el.removeAttribute('show')
+          }
+          
+          if (e.target.classList[0] === "showHomeHT") {
+            showOpp(elems_home);
+            el.removeAttribute('show')
+          }
+          if (e.target.classList[0] === "showAwayHT") {
+            showOpp(elems_away);
+            el.removeAttribute('show')
+          }
+          
+          if (e.target.classList[0] === "showHomeAT") {
+            el.setAttribute('show','reverse')
+            showOpp(elems_home,"reverse")
+          }
+          if (e.target.classList[0] === "showAwayAT") {
+            el.setAttribute('show','reverse')
+            showOpp(elems_away,"reverse")
+          }
+
+
+          
+      }    
+     }
+
+  show_matches(statsHome_elem)
+  show_matches(statsAway_elem)
+  show_matches(statsH2H_elem)
+
+
+  const backlight_half = (el) => {
+      let button_1half = el.querySelector(".matches_th--1stHalf");
+      let button_2half = el.querySelector(".matches_th--2ndHalf");
+      
+     const color_wdl = (el, team, select_team) =>{
+      let reverse = el.parentNode.parentNode.getAttribute('show') || null;
+      let {0:ht_score, 1:at_score} = el.innerHTML.split(" : ");
+      
+      if (reverse) [ht_score,at_score] = [at_score,ht_score]
+      
+      if (team===select_team){
+        if (+ht_score < +at_score) el.classList.add("color_win");
+        if (+ht_score > +at_score) el.classList.add("color_lose");
+        if (+ht_score === +at_score) el.classList.add("color_draw");
+      } else {
+        if (+ht_score < +at_score) el.classList.add("color_lose");
+        if (+ht_score > +at_score) el.classList.add("color_win");
+        if (+ht_score === +at_score) el.classList.add("color_draw");        
+      } 
+     }
+
+     button_1half.onclick = () => {
+      let select_team = el.getAttribute("team"),
+          elems_1stHalf = el.querySelectorAll(".matches_td--1stHalf"),
+          elems_2ndHalf = el.querySelectorAll(".matches_td--2ndHalf");
+        
+        // elems_2ndHalf.forEach(el=>el.classList.remove("color_win", "color_lose", "color_draw"))
+        elems_1stHalf.forEach(el=>{
+          let team = el.parentElement.querySelector(".matches_td--awayTeam").getAttribute("team")
+          color_wdl(el,team,select_team)
+        })
+     }
+
+     button_2half.addEventListener("click", () => {
+      let select_team = el.getAttribute("team"),
+          elems_1stHalf = el.querySelectorAll(".matches_td--1stHalf"),
+          elems_2ndHalf = el.querySelectorAll(".matches_td--2ndHalf");
+
+        // elems_1stHalf.forEach(el=>el.classList.remove("color_win", "color_lose", "color_draw"))
+        elems_2ndHalf.forEach(el=>{
+          let team = el.parentElement.querySelector(".matches_td--awayTeam").getAttribute("team")
+          color_wdl(el,team,select_team)
+        })
+      })      
+     }
+     
+     backlight_half(statsHome_elem)
+     backlight_half(statsAway_elem)
+     backlight_half(statsH2H_elem)
+
+</script>       

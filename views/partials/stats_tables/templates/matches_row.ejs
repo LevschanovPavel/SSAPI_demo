@@ -1,0 +1,34 @@
+<li class="matches_row">
+
+  <li class="matches_td--event tooltipped" 
+        data-position="top" 
+        data-tooltip='<span><%= info.fullDate %></span> <%= info.tooltip %>'>
+    <div>
+      <span class="matches--date"><%=info.fullDate %></span>
+      <img src='https://www.soccer24.com<%= flag_url[info.flag] %>' alt="">
+      <span class="matches--status"><%=info.status %></span>
+    </div>
+  </li>
+
+  <li class="matches_td--homeTeam"><%=info.homeTeam %></li> 
+  <li class="matches_td--awayTeam"><%=info.awayTeam %></li>
+
+  <li class="matches_td--wdl"><span class="wdl"></span></li> 
+  <li class="matches_td--score">
+    <%=stats.goals.match.homeTeam %> : <%=stats.goals.match.awayTeam %>
+  </li>                              
+  <li class="matches_td--1stHalf">
+    <%=stats.goals.firstHalf.homeTeam %> : <%=stats.goals.firstHalf.awayTeam %>
+  </li> 
+  <li class="matches_td--2ndHalf">
+    <%=stats.goals.secondHalf.homeTeam %> : <%=stats.goals.secondHalf.awayTeam %>
+  </li>        
+
+  <li class="matches_td--odds" result='<%= result %>'>
+    <span class="win"><%=odds.w %></span></li>       
+  <li class="matches_td--odds" result='<%= result %>'>
+    <span class="draw"><%=odds.d %></span></li>      
+  <li class="matches_td--odds" result='<%= result %>'>
+    <span class="lose"><%=odds.l %></span></li>  
+  </li>
+</li>

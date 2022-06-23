@@ -1,0 +1,319 @@
+<div class="top-leagues" data-aos="zoom-in-down">
+     <div class="title">Top Leagues:</div>
+  <% for(let t=0; t < pageData.top.length; t++) { %>
+     <div class="logo">
+      <a href="<%= pageData.top[t].link %>">
+        <img src="/img/league/<%= pageData.top[t].logo %>" title="<%= pageData.top[t].title %>" />
+      </a>
+     </div>     
+  <% } %>  
+</div>
+
+<div class="league-nav" data-aos="fade-up">
+  <ul class="tabs">
+    <% if (todayMatches.length===0) { %>
+        <li class="tab col s12"><a href="#fixtures-tab">Upcoming Matches</a></li>
+    <% } else { %>
+        <li class="tab col s6 m6"><a href="#matches-tab">Today's Matches</a></li>
+        <li class="tab col s6 m6"><a href="#fixtures-tab">Fixtures</a></li>    
+    <% } %>
+  </ul>
+</div>
+
+
+<div id="matches-tab" class="col s12">
+  <!-- MATCHES -->
+  <div class="league-subnav" data-aos="fade-up">
+    <ul class="tabs">
+      <li class="tab col s4" data-tab="all_upcoming"><a href="#">All upcoming</a></li>      
+       <li class="tab col s2" data-tab="3600000"><a href="#">1 hour</a></li> 
+       <li class="tab col s2" data-tab="10800000"><a href="#">3 hour</a></li>        
+       <li class="tab col s2" data-tab="43200000"><a href="#">12 hours</a></li>
+    </ul>
+  </div>
+  <div class="today_matches_container">
+      <div class="spinner"><img src="/img/load-indicator.gif"></div>
+      <div class="not_found"><img src="/img/not_found.png"></div>
+      <% for(let t=0; t < todayMatches.length; t++) { %>
+        <div class="today_matches_row">        
+          <div class="event_header" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon--flag event__title fl_<%= todayMatches[t].num %>">
+              <div class="event__titleBox">
+                <span class="event__title--type"><%= todayMatches[t].country %> </span>
+                <span class="event__title--name"><%= todayMatches[t].league %> </span>
+              </div>
+            </div>
+          </div>
+ 
+                <% for(let tm=0; tm < todayMatches[t].matches.length; tm++) { %>
+                      <div  class="event" 
+                            data-aos="fade-right" 
+                            data-aos-delay="600"
+                            time='<%= todayMatches[t].matches[tm].timestamp %>'  
+                            leagueId='<%= todayMatches[t].id %>' 
+                            country='<%= todayMatches[t].country %>'
+                            id='<%= todayMatches[t].matches[tm].matchId %>'
+                      >
+                        <div class="time">
+                          <% if (todayMatches[t].matches[tm].status!=="Not started") { %>
+                            <%= todayMatches[t].matches[tm].status %> 
+                          <% } else { %>
+                            <%= todayMatches[t].matches[tm].matchData %> 
+                            <%= todayMatches[t].matches[tm].matchTime %>                              
+                          <% } %>                      
+                        </div>
+                        <div class="home_team">
+                          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= todayMatches[t].matches[tm].homeTeamIco %>">
+                          <span><%= todayMatches[t].matches[tm].homeTeam %></span>
+                        </div>
+                        <div class="split"> - </div>
+                        <div class="away_team">
+                          <span><%= todayMatches[t].matches[tm].awayTeam %></span>
+                          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= todayMatches[t].matches[tm].awayTeamIco %>">
+                        </div>
+                        <div class="iconStats">
+                          <i class="material-icons" title="Statistics">assessment</i>
+                        </div>                      
+                      </div>
+                <% } %>  
+        </div>
+      <% } %> 
+  </div>
+  
+</div>
+
+<div id="fixtures-tab" class="col s12">
+  <!-- FIXTURES -->
+    <div class="league-subnav" data-aos="fade-up">
+      <ul class="tabs">
+        <li class="tab col s3" data-tab="all_upcoming"><a href="#">All upcoming</a></li>          
+        <li class="tab col s3" data-tab="86400000"><a href="#">Tommorow</a></li>      
+        <li class="tab col s2" data-tab="259200000"><a href="#">3 days</a></li> 
+      </ul>
+    </div>  
+    <div class="today_matches_container">
+      <div class="spinner"><img src="/img/load-indicator.gif"></div>
+      <div class="not_found"><img src="/img/not_found.png"></div>
+
+        <% for(let t=0; t < fixtures.length; t++) { %>
+        <div class="today_matches_row">  
+          <div class="event_header" data-aos="fade-right">
+            <div class="icon--flag event__title fl_<%= fixtures[t].num %>">
+              <div class="event__titleBox">
+                <span class="event__title--type"><%= fixtures[t].country %> </span>
+                <span class="event__title--name"><%= fixtures[t].league %> </span>
+              </div>
+            </div>
+          </div>
+          
+                <% for(let tm=0; tm < fixtures[t].matches.length; tm++) { %>
+                      <div  class="event" 
+                            data-aos="fade-right" 
+                            leagueId='<%= fixtures[t].id %>' 
+                            time='<%= fixtures[t].matches[tm].timestamp %>' 
+                            country='<%= fixtures[t].country %>'
+                            id='<%= fixtures[t].matches[tm].matchId %>'
+                      >
+                        <div class="time">
+                          <% if (fixtures[t].matches[tm].status!=="Not started") { %>
+                            <%= fixtures[t].matches[tm].status %> 
+                          <% } else { %>
+                            <%= fixtures[t].matches[tm].matchData %> 
+                            <%= fixtures[t].matches[tm].matchTime %>                             
+                          <% } %>                      
+                        </div>                      
+                        <div class="home_team">
+                          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= fixtures[t].matches[tm].homeTeamIco %>">
+                          <span><%= fixtures[t].matches[tm].homeTeam %></span>
+                        </div>
+                        <div class="split"> - </div>
+                        <div class="away_team">
+                          <span><%= fixtures[t].matches[tm].awayTeam %></span>
+                          <img class="logo" src="https://www.soccer24.com/res/image/data/<%= fixtures[t].matches[tm].awayTeamIco %>">
+                        </div>
+                        <div class="iconStats">
+                          <i class="material-icons" title="Statistics">assessment</i>
+                        </div>    
+                      </div>
+                <% } %>  
+        </div>
+        <% } %> 
+</div>
+</div>   
+
+
+<script>
+  let champsToday = document.querySelectorAll('#matches-tab .today_matches_row')
+  let spinner = document.querySelector('#matches-tab .spinner')
+  let not_found = document.querySelector('#matches-tab .not_found')
+
+  
+  $('#matches-tab .tabs li').on('click', function(){
+      let selectTime = $(this).data('tab')
+      let currentTime = Date.now();
+
+      let findChamp = false;
+      spinner.style.display = 'block'
+      not_found.style.display = 'none'
+
+      champsToday.forEach(champ=>{
+        let champMatches = champ.querySelectorAll('.event')
+        let findMatch = false;
+
+        champMatches.forEach((el,idx,array)=>{
+          let diff = el.getAttribute("time")*1000 - currentTime 
+          let parent = el.parentElement.querySelector(".event_header")
+          el.style.display = 'none'
+          parent.style.display = 'none'
+          el.removeAttribute("data-aos") 
+          parent.removeAttribute("data-aos") 
+
+          if (diff > selectTime || diff < 0) {
+            el.style.display = 'none'
+          } else {
+            findMatch = true
+            findChamp = true
+            setTimeout(()=>{
+              spinner.style.display = 'none'
+              el.style.display = 'grid'
+              el.parentElement.querySelector(".event_header").style.display = 'grid'
+            },1000)
+          }
+
+          if (idx===array.length-1 && !findMatch) {
+            el.parentElement.querySelector(".event_header").style.display = 'none'
+          }
+        })
+      })
+
+      if (!findChamp){
+        setTimeout(()=>{
+          spinner.style.display = 'none'
+          not_found.style.display = 'block'
+        },1000)
+    }
+      
+  })
+  
+  
+
+</script>
+
+<script>
+   let champsFixtures = document.querySelectorAll('#fixtures-tab .today_matches_row')
+   let spinner_fixt = document.querySelector('#fixtures-tab .spinner')
+   let not_found_fixt = document.querySelector('#fixtures-tab .not_found')
+   
+   $('#fixtures-tab .tabs li').on('click', function(){
+      let selectTime = $(this).data('tab')
+      let currentDate = new Date().setHours(0, 0, 0, 0) + 86400000;
+      let findChamp = false;
+      spinner_fixt.style.display = 'block'
+      not_found_fixt.style.display = 'none'
+
+      console.log("selectTime",selectTime)
+      console.log("currentDate",currentDate)
+
+      champsFixtures.forEach(champ=>{
+        let champMatches = champ.querySelectorAll('.event')
+        let findMatch = false;
+
+        champMatches.forEach((el,idx,array)=>{
+          let diff = currentDate + selectTime - el.getAttribute("time")*1000 
+          let parent = el.parentElement.querySelector(".event_header")
+          el.style.display = 'none'
+          parent.style.display = 'none'
+          el.removeAttribute("data-aos") 
+          parent.removeAttribute("data-aos") 
+
+          console.log("elgetAttribute", el.getAttribute("time")*1000 )
+          console.log("diff", diff )
+          if (diff < 0 ) {
+            el.style.display = 'none'
+          } else {
+            findMatch = true
+            findChamp = true
+            setTimeout(()=>{
+              spinner_fixt.style.display = 'none'
+              el.style.display = 'grid'
+              el.parentElement.querySelector(".event_header").style.display = 'grid'
+            },1000)
+          }
+
+          if (idx===array.length-1 && !findMatch) {
+            el.parentElement.querySelector(".event_header").style.display = 'none'
+          }
+        })
+      })
+      
+      if (!findChamp){
+        setTimeout(()=>{
+          spinner_fixt.style.display = 'none'
+          not_found_fixt.style.display = 'block'
+        },1000)
+    }
+   
+   })
+</script>
+
+<script>
+  // var events = document.getElementsByClassName('event');
+  let events = document.getElementsByClassName('event');
+  
+  for(var i = 0; i < events.length; i++)
+    events[i].onclick = function() {
+      let matchId = this.id
+      let leagueId = this.getAttribute('leagueId')
+      let country = this.getAttribute('country')
+      
+      location.assign(`/${country}/${leagueId}/match?id=${matchId}`)
+    };
+
+     async function getLiveResult() {
+      try {
+      const res = await fetch('/api/v1/todayMatches?show=live', { 
+        method: 'GET', 
+        // body: JSON.stringify({ name, email, password }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const result = await res.json();
+
+      result.data.forEach(champ => champ.matches.forEach(match=>{
+        let id = match.matchId;
+        if (match.matchStatus=== "completed") {
+          document.getElementById(id).querySelector('.time').innerHTML = "Finished";
+          let score = "<strong>" + match.matchScore.match.scoreHT + " : " + match.matchScore.match.scoreAT + "</strong>"
+          let el = document.getElementById(id).querySelector('.split')
+          el.innerHTML = score;
+          el.style.color="#000";
+        }
+
+        if (match.matchStatus==="live") {
+          let score = "<strong>" + match.matchScore.match.scoreHT + " : " + match.matchScore.match.scoreAT + "</strong>"
+          let el = document.getElementById(id).querySelector('.split')
+          el.innerHTML = score;
+          el.style.color="#cc0000";
+          let progress = (match.matchProgress === "break")? "Half Time" 
+                                                          :match.matchProgress + ' ' + "<span>"+ match.matchMinute + "<i class=\"pulse\">'</i></span>"
+
+          let el2 = document.getElementById(id).querySelector('.time')
+          el2.innerHTML = progress;
+          el2.style.color="#00796b";
+          // el2.style.display="block";
+          
+        }
+        
+      }));
+
+      // console.log(result.data);
+      }
+      catch (err) {
+        console.log(err);
+      }    
+    }
+
+    // getLiveResult()
+    // setInterval(getLiveResult,30000)
+
+    
+</script>

@@ -1,0 +1,42 @@
+<div class="navbar-fixed">
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="/" class="brand-logo">
+        <img src="/img/logo.png" alt="">
+      </a>
+   
+  
+      <ul class="right hide-on-small-only">
+        <li><a class="waves-effect waves-light btn" href="/api/v1/doc">Documentation</a></li>
+        <li><a class="waves-effect waves-light btn">Pricing</a></li>
+        <% if (user) { %>
+          
+          <li class="flow-text teal-text text-darken-4">
+            <% if (user.name==="admin") { %>
+              <a href="/admin" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+            <% } else { %>
+              <a href="/me" class="nav-user"><i class="material-icons">person</i><%= user.name %></a>
+            <% } %>
+          </li>
+          <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+        <% } else { %>
+          <li><a href="/login">Log in</a></li>
+          <li><a href="/signup">Sign up</a></li>
+        <% } %>
+      </ul>
+  
+      <ul id="nav-mobile" class="sidenav">
+        <% if (user) { %>
+          <li class="flow-text teal-text text-darken-4">Welcome, <%= user.name %></li>
+          <li><a href="/logout"><i class="material-icons">exit_to_app</i></a></li>
+        <% } else { %>
+          <li><a href="/login">Log in</a></li>
+          <li><a href="/signup">Sign up</a></li>
+        <% } %>      
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+  </div>
+  
+  
